@@ -19,7 +19,7 @@
             android:title="Lists"
             android:icon="@drawable/person_icon"/>
         <item
-
+            android:id="@+id/momentization"
             android:title="Momentization"
             android:icon="@drawable/person_icon"/>
     </group>
