@@ -24,7 +24,7 @@ public class Adapter extends FragmentStateAdapter {
         } else if (position == 2) {
             return new NotificationFragment();
         } else {
-            return new Newsfeed();
+            return new MessageFragment();
         }
     }
 

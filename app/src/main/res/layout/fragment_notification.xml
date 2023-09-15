@@ -2,195 +2,72 @@
 <!-- notification_layout.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/user1"
-            android:contentDescription="Profile Image" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="8dp">
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="rosé pics"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="princess"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:maxLines="2" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2m ago"
-                android:textSize="12sp"
-                android:textColor="#888" />
-
-        </LinearLayout>
-    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ccc" />
+        android:background="#e7ecf0" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:id="@+id/background"
+        android:layout_width="414dp"
+        android:layout_height="252dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="51dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/star_icon">
+        </ImageView>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/user2"
-            android:contentDescription="Profile Image" />
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="8dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="GPT"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:textStyle="bold" />
+            android:layout_width="311dp"
+            android:layout_height="250dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:src="@drawable/user3"
+                android:layout_marginTop="5dp">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="princess"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:maxLines="2" />
+                android:layout_width="310dp"
+                android:layout_height="19dp"
+                android:text="@string/noti_content1">
+
+            </TextView>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:text="@string/noti_content2">
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2m ago"
-                android:textSize="12sp"
-                android:textColor="#888" />
+            </TextView>
 
         </LinearLayout>
+
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#ccc" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:background="#e7ecf0">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/user1"
-            android:contentDescription="Profile Image" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="8dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="rosé pics"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="princess"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:maxLines="2" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2m ago"
-                android:textSize="12sp"
-                android:textColor="#888" />
-
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ccc" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/user1"
-            android:contentDescription="Profile Image" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="8dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="rosé pics"
-                android:textSize="16sp"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="princess"
-                android:textSize="14sp"
-                android:textColor="#333"
-                android:maxLines="2" />
-
-            <TextView
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2m ago"
-                android:textSize="12sp"
-                android:textColor="#888" />
-
-        </LinearLayout>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#ccc" />
-
+    </View>
 
 </LinearLayout>

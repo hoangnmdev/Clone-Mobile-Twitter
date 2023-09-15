@@ -41,25 +41,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="princess"></TextView>
+
                 <ImageView
-                    android:background="@drawable/border_image"
-                    android:layout_width="343dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:adjustViewBounds="true"
+                    android:background="@drawable/border_image"
                     android:clipToOutline="true"
                     android:src="@drawable/user1_post"></ImageView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="10dp"
-                        android:src="@drawable/heart"></ImageView>
+                        android:background="@drawable/heart"></androidx.appcompat.widget.AppCompatImageButton>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -67,10 +69,11 @@
                         android:text="28.6K"
                         android:layout_marginLeft="10dp"></TextView>
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/comment"
+                        android:background="@drawable/comment"
+
                         android:layout_marginLeft="10dp"/>
 
                     <TextView
@@ -79,10 +82,10 @@
                         android:text="1,395"
                         android:layout_marginLeft="10dp"/>
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/share"
+                        android:background="@drawable/share"
                         android:layout_marginLeft="10dp"/>
                     <TextView
                         android:layout_width="wrap_content"

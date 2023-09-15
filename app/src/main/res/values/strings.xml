@@ -4,4 +4,16 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="rose_user"> "@roseannepics"</string>
+
+    <string name="gpt_user"> "@gptFAKE"</string>
+
+    <string name="noti_content1">"In case you missed Adobe Pts’s Tweet"</string>
+
+    <string name="noti_content2">"Creating meaningful experiences: an Introduction to User Experience design >
+
+owww.ly/p0fx50y5CoO
+
+#ux #uxdesign #uxresearch #userresearch #research #productdesing #webdesign #userexperience #startup #digital #design #diseno #psychology #servicedesign #conversion pic.twitter.com/wgpLcbkomN " </string>
 </resources>

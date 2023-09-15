@@ -10,65 +10,94 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <!-- Content Container -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <!-- Toolbar -->
+            <!-- Toolbar -->
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/logo_image"
-                android:src="@drawable/twitter_logo">
+                <ImageView
+                    android:id="@+id/logo_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:src="@drawable/twitter_logo">
 
-            </ImageView>
+                </ImageView>
 
-            <!-- Include a SearchView initially set to gone -->
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:hint="Search..."
-                app:iconifiedByDefault="false"
-                app:searchViewStyle="@style/AppSearchViewStyle"
-                android:background="@drawable/custom_searchview_background"/>
-        </androidx.appcompat.widget.Toolbar>
+                <TextView
+                    android:id="@+id/noti_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/noti_font"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal|top"
+                    android:layout_marginLeft="100dp"
+                    android:visibility="gone"
+                    android:text="Notifications">
 
-        <!-- ViewPager2 Container -->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+                </TextView>
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager"
+                <TextView
+                    android:id="@+id/mess_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/noti_font"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal|top"
+                    android:layout_marginLeft="100dp"
+                    android:visibility="gone"
+                    android:text="Message">
+
+                </TextView>
+
+
+                <!-- Include a SearchView initially set to gone -->
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_searchview_background"
+                    app:queryHint="Search..."
+                    android:visibility="gone"
+                    app:iconifiedByDefault="false"
+                    app:queryBackground="@android:color/transparent"
+                    app:searchViewStyle="@style/AppSearchViewStyle" />
+            </androidx.appcompat.widget.Toolbar>
+
+            <!-- ViewPager2 Container -->
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            </androidx.viewpager2.widget.ViewPager2>
-        </FrameLayout>
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+                </androidx.viewpager2.widget.ViewPager2>
+            </FrameLayout>
 
-        </com.google.android.material.tabs.TabLayout>
-    </LinearLayout>
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.google.android.material.tabs.TabLayout>
+        </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <!-- NavigationView (on top) -->
     <com.google.android.material.navigation.NavigationView
