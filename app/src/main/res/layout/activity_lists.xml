@@ -1,138 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListsActivity"
-    android:orientation="vertical">
+    tools:context=".ListsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_lists"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints" >
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_searchview_background"
-            app:queryHint="Find list"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@android:color/transparent"
-            app:searchViewStyle="@style/AppSearchViewStyle" />
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/toolbar_lists"
 
-            android:visibility="gone"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Other views and content for your child activity -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/list_header"
-        android:textColor="@color/black"
-        android:textSize="20sp">
-    </TextView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="16dp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!-- Rounded Rectangle Icon on the Left -->
-        <ImageView
-            android:id="@+id/rounded_icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/icon_profile_list_item"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:padding="8dp"/>
-
-        <!-- Two Lines of Text Aligned to the Left -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/rounded_icon"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/text_line1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nguyen • 65 members"
-                android:textSize="16sp"
-                android:textColor="#000"/>
-
-            <TextView
-                android:id="@+id/text_line2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="3,1k followers"
-                android:textSize="16sp"
-                android:textColor="#000"/>
-
-        </LinearLayout>
-
-        <!-- Circular Icon with Plus Sign on the Right -->
-        <ImageView
-            android:id="@+id/circular_icon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@drawable/ic_circleplus"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="8dp"/>
-    </RelativeLayout>
-    <TextView
-        android:id="@+id/linkTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/more_op"
-        android:layout_gravity="center"
-        android:textColor="#1a75ff"
-        android:autoLink="web"
-        android:clickable="true"
-        android:focusable="true">
-    </TextView>
-
-    <!-- White line to simulate the underline -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@android:color/darker_gray"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/my_list"
-        android:textColor="@color/black"
-        android:textSize="20sp">
-    </TextView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
-
-    <TextView
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/no_list">
-
-    </TextView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

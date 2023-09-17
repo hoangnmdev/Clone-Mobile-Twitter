@@ -16,7 +16,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "Twitter";
     DrawerLayout drawerLayout;
@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
+
+
+
+
             /* Hide app name in tool bar */
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
@@ -57,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
         //----------Set MutiView---------------//
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
@@ -75,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //------------------listen to item click ----------------//
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     //---------------------Open activity after click menu's item---------------//
@@ -98,4 +106,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         return true;
     }
+
+
 }
