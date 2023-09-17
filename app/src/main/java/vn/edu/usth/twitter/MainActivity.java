@@ -11,8 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -43,13 +41,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-        /*----------------Tool Bar-----------------*/
 
+        /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
-        /* -------Hide app name in tool bar------- */
+
+
+
+
+            /* Hide app name in tool bar */
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
@@ -60,39 +60,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        //----------Set MutiView---------------//
+        navigationView.setNavigationItemSelectedListener(this);
 
+
+
+        //----------Set MutiView---------------//
+        ViewPager2 viewPager = findViewById(R.id.viewPager);
 
         // Create an adapter for your ViewPager2
         pagerAdapter = new Adapter(this);
 
         // Set the adapter to your ViewPager2
         viewPager.setAdapter(pagerAdapter);
-
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
         //---------------Link tabLayout with viewPager--------------//
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             // Set tab titles here if needed
             tab.setIcon(tabIcons[position]);
         }).attach();
-
         //------------------listen to item click ----------------//
-        navigationView = findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-        //------------------Click on profile image in navigation view to open the profile activity----------//
-        View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
-        ImageButton imageButton = headerView.findViewById(R.id.profile_image);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the click event here
-                // Start a new activity or perform any desired action
-                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //---------------------Open activity after click menu's item---------------//
