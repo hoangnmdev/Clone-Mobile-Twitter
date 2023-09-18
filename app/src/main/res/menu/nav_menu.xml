@@ -5,25 +5,30 @@
         <item
             android:id="@+id/profile"
             android:title="Profile"
-            android:icon="@drawable/person_icon"/>
+            android:icon="@drawable/nav_icon_profile"/>
         <item
             android:id="@+id/premium"
             android:title="Premium"
-            android:icon="@drawable/person_icon"/>
+            android:icon="@drawable/nav_icon_premium"/>
         <item
             android:id="@+id/bookmarks"
             android:title="Bookmarks"
-            android:icon="@drawable/person_icon"/>
+            android:icon="@drawable/nav_icon_bookmark"/>
         <item
             android:id="@+id/lists"
             android:title="Lists"
-            android:icon="@drawable/person_icon"/>
+            android:icon="@drawable/nav_icon_lists"/>
+        <item
+            android:id="@+id/momentization"
+            android:title="Momentization"
+            android:icon="@drawable/nav_icon_moments"/>
+     
     </group>
 
     <item>
         <menu>
             <item
-                android:title="Proesional Tools"/>
+                android:title="Profesional Tools"/>
             <item
                 android:title="Setting and Support"/>
         </menu>

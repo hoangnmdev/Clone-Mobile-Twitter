@@ -6,21 +6,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/main_color"
     android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#e7ecf0" />
+        android:background="@color/main_color" />
 
     <LinearLayout
         android:id="@+id/background"
         android:layout_width="414dp"
-        android:layout_height="252dp"
+        android:layout_height="150dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#FFFFFF"
+        android:background="@color/main_color"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="24dp"
@@ -40,7 +40,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="37dp"
                 android:layout_height="37dp"
-                android:src="@drawable/user3"
+                android:src="@drawable/user7"
                 android:layout_marginTop="5dp">
 
             </de.hdodenhof.circleimageview.CircleImageView>
@@ -54,7 +54,79 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="90dp"
+                android:text="@string/noti_content1.1">
+
+            </TextView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e7ecf0">
+
+    </View>
+
+    <LinearLayout
+        android:id="@+id/background2"
+        android:layout_width="414dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/main_color"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="51dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/star_icon">
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="311dp"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="37dp"
+                    android:layout_height="37dp"
+                    android:src="@drawable/user_4"
+                    android:layout_marginTop="5dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="37dp"
+                    android:layout_height="37dp"
+                    android:src="@drawable/user5"
+                    android:layout_marginTop="5dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="37dp"
+                    android:layout_height="37dp"
+                    android:src="@drawable/user6"
+                    android:layout_marginTop="5dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="310dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="2dp"
                 android:text="@string/noti_content2">
 
             </TextView>
