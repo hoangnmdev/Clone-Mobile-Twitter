@@ -22,6 +22,7 @@
             android:id="@+id/momentization"
             android:title="Momentization"
             android:icon="@drawable/nav_icon_moments"/>
+     
     </group>
 
     <item>

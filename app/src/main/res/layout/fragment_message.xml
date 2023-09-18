@@ -39,27 +39,27 @@
         android:layout_height="90dp"
         android:background="@color/main_color"
         android:orientation="horizontal">
-        
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
             android:src="@drawable/user1">
 
         </de.hdodenhof.circleimageview.CircleImageView>
-        
+
         <LinearLayout
             android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="19dp"
             android:orientation="vertical">
-            
+
             <LinearLayout
                 android:layout_width="214dp"
                 android:layout_height="19dp"
@@ -69,9 +69,8 @@
                     android:layout_width="70dp"
                     android:layout_height="19dp"
                     android:text="rosé pics "
-                    android:textSize="16sp"
-                    android:textAppearance="@string/rose_user">
-                </TextView>
+                    android:textAppearance="@string/rose_user"
+                    android:textSize="16sp"></TextView>
 
                 <TextView
                     android:layout_width="100dp"
@@ -79,14 +78,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/rose_user"
-                    android:textSize="16sp"
-                    android:textAppearance="@style/message_font">
+                    android:textAppearance="@style/message_font"
+                    android:textSize="16sp">
 
 
                 </TextView>
 
             </LinearLayout>
-            
+
             <TextView
                 android:layout_width="187dp"
                 android:layout_height="19dp"
@@ -94,9 +93,9 @@
                 android:textAppearance="@style/message_font">
 
             </TextView>
-            
+
         </LinearLayout>
-        
+
         <TextView
             android:layout_width="70dp"
             android:layout_height="19dp"
@@ -106,7 +105,7 @@
             android:textAppearance="@style/message_font">
 
         </TextView>
-        
+
     </LinearLayout>
 
     <View

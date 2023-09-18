@@ -11,6 +11,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -82,6 +84,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //------------------listen to item click ----------------//
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //------------------Click on profile image in navigation view to open the profile activity----------//
+        View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
+        ImageButton imageButton = headerView.findViewById(R.id.profile_image);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click event here
+                // Start a new activity or perform any desired action
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //---------------------Open activity after click menu's item---------------//
