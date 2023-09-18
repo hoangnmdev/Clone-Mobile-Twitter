@@ -89,6 +89,16 @@
                     android:layout_height="match_parent">
 
                 </androidx.viewpager2.widget.ViewPager2>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:backgroundTint="@color/baby_blue"
+                    android:tint="@color/white"
+                    android:src="@drawable/tweet"/>
             </FrameLayout>
 
             <com.google.android.material.tabs.TabLayout
