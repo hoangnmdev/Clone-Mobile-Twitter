@@ -9,10 +9,13 @@
 
     <string name="gpt_user"> "@gptFAKE"</string>
 
-    <string name="noti_content1">"In case you missed Adobe Pts’s Tweet"</string>
+    <string name="noti_content1">"<b>SmenderTheDesinger</b> has a new Tweet!"</string>
 
-    <string name="noti_content2">"Creating meaningful experiences: an Introduction to User Experience design >
+    <string name="noti_content1.1">"Creating meaningful experiences: an Introduction to User Experience design
 
+#ux #uxdesign #uxresearch #webdesign #design  " </string>
+
+    <string name="noti_content2">"<b>Sigma</b> and 2 others followed you </string>
 
 
 
@@ -39,4 +42,5 @@ owww.ly/p0fx50y5CoO
     <string name="premium_month">Month</string>
 
     <string name="premium_year">Year</string>
+
 </resources>
