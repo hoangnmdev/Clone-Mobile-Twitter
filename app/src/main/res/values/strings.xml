@@ -13,7 +13,12 @@
 
     <string name="noti_content1.1">"Creating meaningful experiences: an Introduction to User Experience design
 
-<<<<<<<<< Temporary merge branch 1
+#ux #uxdesign #uxresearch #webdesign #design  " </string>
+
+    <string name="noti_content2">"<b>Sigma</b> and 2 others followed you </string>
+
+
+
 
 
 
@@ -40,9 +45,4 @@ owww.ly/p0fx50y5CoO
     <string name="premium_month">Month</string>
 
     <string name="premium_year">Year</string>
-=========
-#ux #uxdesign #uxresearch #webdesign #design  " </string>
-
-    <string name="noti_content2">"<b>Sigma</b> and 2 others followed you </string>
->>>>>>>>> Temporary merge branch 2
 </resources>
