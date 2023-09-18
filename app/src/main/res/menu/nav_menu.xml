@@ -17,11 +17,15 @@
         <item
             android:id="@+id/lists"
             android:title="Lists"
+<<<<<<<<< Temporary merge branch 1
+            android:icon="@drawable/person_icon"/>
+=========
             android:icon="@drawable/nav_icon_lists"/>
         <item
             android:id="@+id/momentization"
             android:title="Momentization"
             android:icon="@drawable/nav_icon_moments"/>
+>>>>>>>>> Temporary merge branch 2
     </group>
 
     <item>
