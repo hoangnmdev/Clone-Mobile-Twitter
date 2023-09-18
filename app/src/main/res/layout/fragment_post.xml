@@ -4,96 +4,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PostFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/user1"
+            >
+        </de.hdodenhof.circleimageview.CircleImageView>
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/user1"
-                >
-            </de.hdodenhof.circleimageview.CircleImageView>
+            android:orientation="vertical">
             <LinearLayout
+                android:paddingBottom="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:paddingBottom="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                android:orientation="horizontal">
 
-                    <TextView
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="rosé pics" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="\@rosespics"/>
-                </LinearLayout>
                 <TextView
                     android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="princess"></TextView>
-
-                <ImageView
-                    android:layout_width="320dp"
+                    android:text="rosÃ© pics" />
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/border_image"
-                    android:clipToOutline="true"
-                    android:src="@drawable/user1_post"></ImageView>
+                    android:text="\@rosespics"/>
+            </LinearLayout>
+            <TextView
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="princess"></TextView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/border_image"
+                android:clipToOutline="true"
+                android:src="@drawable/user1_post"></ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/heart"></androidx.appcompat.widget.AppCompatImageButton>
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:text="28.6K"
+                    android:layout_marginLeft="10dp"></TextView>
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:background="@drawable/heart"></androidx.appcompat.widget.AppCompatImageButton>
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/comment"
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="28.6K"
-                        android:layout_marginLeft="10dp"></TextView>
+                    android:layout_marginLeft="10dp"/>
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:background="@drawable/comment"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1,395"
+                    android:layout_marginLeft="10dp"/>
 
-                        android:layout_marginLeft="10dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1,395"
-                        android:layout_marginLeft="10dp"/>
-
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:background="@drawable/share"
-                        android:layout_marginLeft="10dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2,383"
-                        android:layout_marginLeft="10dp"/>
-                </LinearLayout>
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/share"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,383"
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

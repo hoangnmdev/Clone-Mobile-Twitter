@@ -51,7 +51,7 @@
         android:layout_marginRight="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="15dp"
         android:text="@string/bookmark_content"
         android:layout_gravity="center">
     </TextView>

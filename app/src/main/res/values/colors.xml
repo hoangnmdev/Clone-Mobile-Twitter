@@ -8,4 +8,6 @@
     <color name="twitter_search_close_icon_color">#75838d</color>
     <color name="twitter_search_icon_color">#75838d</color>
 
+    <color name="main_color">#ffffff</color>
+
 </resources>

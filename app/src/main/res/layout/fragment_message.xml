@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/main_color"
     android:orientation="vertical"
     android:id="@+id/background">
 
@@ -13,7 +13,7 @@
         android:id="@+id/message_toolbar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/white">
+        android:background="@color/main_color">
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_view"
@@ -37,29 +37,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:background="@color/white"
+        android:background="@color/main_color"
         android:orientation="horizontal">
-
+        
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginLeft="20dp"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="12dp"
             android:src="@drawable/user1">
 
         </de.hdodenhof.circleimageview.CircleImageView>
-
+        
         <LinearLayout
-            android:layout_width="230dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginLeft="20dp"
+            android:layout_alignParentTop="true"
             android:layout_marginTop="19dp"
             android:orientation="vertical">
-
+            
             <LinearLayout
                 android:layout_width="214dp"
                 android:layout_height="19dp"
@@ -69,8 +69,9 @@
                     android:layout_width="70dp"
                     android:layout_height="19dp"
                     android:text="rosé pics "
-                    android:textAppearance="@string/rose_user"
-                    android:textSize="16sp"></TextView>
+                    android:textSize="16sp"
+                    android:textAppearance="@string/rose_user">
+                </TextView>
 
                 <TextView
                     android:layout_width="100dp"
@@ -78,14 +79,14 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:text="@string/rose_user"
-                    android:textAppearance="@style/message_font"
-                    android:textSize="16sp">
+                    android:textSize="16sp"
+                    android:textAppearance="@style/message_font">
 
 
                 </TextView>
 
             </LinearLayout>
-
+            
             <TextView
                 android:layout_width="187dp"
                 android:layout_height="19dp"
@@ -93,19 +94,19 @@
                 android:textAppearance="@style/message_font">
 
             </TextView>
-
+            
         </LinearLayout>
-
+        
         <TextView
             android:layout_width="70dp"
             android:layout_height="19dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="19dp"
+            android:layout_marginLeft="5dp"
             android:text="14/09/23"
             android:textAppearance="@style/message_font">
 
         </TextView>
-
+        
     </LinearLayout>
 
     <View
@@ -118,7 +119,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:background="@color/white"
+        android:background="@color/main_color"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -133,7 +134,7 @@
         </de.hdodenhof.circleimageview.CircleImageView>
 
         <LinearLayout
-            android:layout_width="230dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
@@ -182,7 +183,7 @@
             android:layout_width="70dp"
             android:layout_height="19dp"
             android:layout_marginTop="19dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:text="14/09/23"
             android:textAppearance="@style/message_font">
 
