@@ -18,6 +18,7 @@ public class BookmarksActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar_bookmarks);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         setTitle("Bookmarks");
     }
     public boolean onOptionsItemSelected(MenuItem item) {

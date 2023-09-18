@@ -25,11 +25,12 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "Twitter";
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private Toolbar toolbar;
     private TabLayout tabLayout;
 
+    private FloatingActionButton fab ;
     private int[] tabIcons = {
             R.drawable.home_icon,
             R.drawable.search_icon,
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-
+        fab = findViewById(R.id.fab);
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
@@ -100,8 +101,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         //------------------Click on profile image in navigation view to open the profile activity----------//
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,10 +110,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    //---------------------Open activity after click menu's item---------------//
     private void setToolbarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
+
+
+    //---------------------Open activity after click menu's item---------------//
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();

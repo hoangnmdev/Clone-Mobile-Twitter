@@ -96,8 +96,8 @@
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
-                    android:backgroundTint="@color/baby_blue"
-                    android:tint="@color/white"
+                    app:backgroundTint="@color/baby_blue"
+                    app:tint="@color/white"
                     android:src="@drawable/tweet"/>
             </FrameLayout>
 
@@ -116,6 +116,7 @@
         android:layout_height="match_parent"
         app:headerLayout="@layout/header"
         app:menu="@menu/nav_menu"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"
+        android:paddingTop="20dp"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

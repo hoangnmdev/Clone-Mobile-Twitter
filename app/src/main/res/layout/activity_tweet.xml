@@ -24,7 +24,7 @@
         android:layout_marginTop="129dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/person_icon" />
+        android:src="@drawable/person_icon"/>
 
     <EditText
         android:id="@+id/editTextStatus"
@@ -59,7 +59,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="11dp"
-        android:background="@color/material_dynamic_primary0"
+        android:backgroundTint="@color/baby_blue"
         android:text="Post Status"
         android:textColor="@android:color/white" />
 </RelativeLayout>
