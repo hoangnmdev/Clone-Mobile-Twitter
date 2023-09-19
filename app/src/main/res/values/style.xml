@@ -54,4 +54,5 @@
         <item name="android:letterSpacing">-0.02</item>
         <item name="android:textColor">#141619</item>
     </style>
+
 </resources>
