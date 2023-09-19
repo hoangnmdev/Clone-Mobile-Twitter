@@ -36,4 +36,8 @@
     <string name="premium_month">Month</string>
 
     <string name="premium_year">Year</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>

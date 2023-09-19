@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PremiumActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/premium_bg">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_premium"
@@ -24,16 +25,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/premium_title"
-                android:textSize="16sp"
+                android:layout_marginLeft="110dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:textColor="@color/black"/>
 
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/premium_user"
-                android:textSize="12sp"
-                android:textColor="@color/black"/>
 
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -55,31 +51,33 @@
             android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/rr"
+            android:layout_centerInParent="true"
             android:layout_marginEnd="16dp"
-            android:layout_centerInParent="true">
+            android:background="@drawable/round_bg_white">
 
             <!-- Add your content inside the rounded rectangle here -->
 
-            <EditText
+            <TextView
                 android:id="@+id/text"
-                android:layout_width="325dp"
-                android:layout_height="98dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginBottom="0dp"
-                android:textSize="15dp"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
-                android:textColor="@color/black" />
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/premium_content1"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/tickIcon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_tick"/>
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_tick" />
         </RelativeLayout>
     </RelativeLayout>
 
@@ -129,31 +127,137 @@
         android:layout_width="match_parent"
         android:layout_height="16dp"
         android:layout_below="@+id/toolbar" />
-    <RelativeLayout
-        android:id="@+id/lay1"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar">
-
-        <RelativeLayout
-            android:id="@+id/layout1"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/round_bg_blue_border"
+        android:orientation="vertical">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/rr"
-            android:layout_marginEnd="16dp"
-            android:layout_centerInParent="true">
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="18dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="@string/premium_content3">
 
-            <!-- Add your content inside the rounded rectangle here -->
+        </TextView>
 
-            <TextView
-                android:id="@+id/text1"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                android:textColor="@color/black"
-                android:textSize="15dp" />
-        </RelativeLayout>
-    </RelativeLayout>
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="&#8226;">
+
+                </TextView>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Premium users may have an ad-free experience while using Twitter."
+                    android:layout_weight="1">
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="&#8226;">
+
+                </TextView>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="Access to more detailed analytics and insights about your tweets and followers."
+                    android:layout_weight="1">
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="&#8226;">
+
+                </TextView>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="The ability to customize the look and feel of your Twitter profile with different themes and color schemes."
+                    android:layout_weight="1">
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:text="&#8226;">
+
+                </TextView>
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="The ability to schedule tweets in advance for optimal posting times."
+                    android:layout_weight="1">
+
+                </TextView>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="58dp"
+            android:textStyle="bold"
+            android:textColor="#98979b"
+            android:text="@string/premium_content2">
+
+        </TextView>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
-            /* Hide app name in tool bar */
+        /*---------Hide app name in tool bar--------*/
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             tab.setIcon(tabIcons[position]);
         }).attach();
         //------------------listen to item click ----------------//
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
