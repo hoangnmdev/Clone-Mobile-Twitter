@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TweetActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tweetToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/imageViewProfileIcon"
+        android:layout_width="63dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/person_icon"/>
+
+    <EditText
+        android:id="@+id/editTextStatus"
+        android:layout_width="272dp"
+        android:layout_height="114dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/imageViewProfileIcon"
+        android:gravity="start|top"
+        android:hint="What's on your mind?"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
+
+    <TextView
+        android:id="@+id/textViewCharacterCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/editTextStatus"
+        android:layout_marginStart="258dp"
+        android:layout_marginBottom="-44dp"
+        android:layout_toEndOf="@id/imageViewProfileIcon"
+        android:text="0/280"
+        android:textColor="@color/cardview_dark_background" />
+
+    <Button
+        android:id="@+id/buttonPostStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="11dp"
+        android:backgroundTint="@color/baby_blue"
+        android:text="Post Status"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

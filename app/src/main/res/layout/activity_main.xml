@@ -89,6 +89,16 @@
                     android:layout_height="match_parent">
 
                 </androidx.viewpager2.widget.ViewPager2>
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    app:backgroundTint="@color/baby_blue"
+                    app:tint="@color/white"
+                    android:src="@drawable/tweet"/>
             </FrameLayout>
 
             <com.google.android.material.tabs.TabLayout
@@ -102,11 +112,11 @@
     <!-- NavigationView (on top) -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_marginTop="30dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:headerLayout="@layout/header"
         app:menu="@menu/nav_menu"
-        android:layout_gravity="start" />
+        android:layout_gravity="start"
+        android:paddingTop="20dp"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
