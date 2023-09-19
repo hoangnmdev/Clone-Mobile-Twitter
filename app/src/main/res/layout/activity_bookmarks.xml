@@ -23,8 +23,10 @@
                 android:id="@+id/premiumTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
                 android:text="Bookmarks"
-                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textSize="20sp"
                 android:textColor="@color/black"/>
 
 
@@ -36,15 +38,15 @@
     <TextView
         android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/bookmark_head"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20dp"></TextView>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+
 
     <TextView
         android:layout_marginLeft="30dp"
