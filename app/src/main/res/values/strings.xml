@@ -40,4 +40,16 @@
     <string name="password">password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+
+    <string name="premium_content1">Premium subcribers
+                                    with a verified phone
+                                    number will get a blue
+                                    checkmark once
+                                    approved.
+
+    </string>
+
+    <string name="premium_content3">Premium</string>
+
+    <string name="premium_content2"><u>Show more</u></string>
 </resources>
