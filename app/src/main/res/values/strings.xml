@@ -52,4 +52,18 @@
     <string name="premium_content3">Premium</string>
 
     <string name="premium_content2"><u>Show more</u></string>
+
+    <string name="profile_user_name">"User_Name"</string>
+
+    <string name="profile_user_tagname">"@user_name"</string>
+
+    <string name="profile_following"><b>200</b> Following </string>
+
+    <string name="profile_followers"><b>50</b> Followers </string>
+
+    <string name="pinned_tweet">Pinned Tweet</string>
+
+    <string name="profile_tweet_date">&#8226; 19/9/23</string>
+
+
 </resources>
