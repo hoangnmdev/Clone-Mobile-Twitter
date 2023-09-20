@@ -60,10 +60,12 @@ public class LoginActivity extends AppCompatActivity {
                 password = String.valueOf((editTextPassword.getText()));
 
                 if(TextUtils.isEmpty(email)) {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }

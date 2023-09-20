@@ -70,10 +70,12 @@ public class RegisterActivity extends AppCompatActivity {
                 password = String.valueOf((editTextPassword.getText()));
 
                 if(TextUtils.isEmpty(email)){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
                 }
