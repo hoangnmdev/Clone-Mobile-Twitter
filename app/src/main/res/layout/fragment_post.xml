@@ -64,42 +64,55 @@
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageButton
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/heart"></androidx.appcompat.widget.AppCompatImageButton>
+                    android:src="@drawable/comment"
+                    android:padding="0dp"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="commentPost"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="28.6K"></TextView>
+                    android:text="2,383"
+                    android:layout_marginLeft="10dp"/>
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageButton
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-
-                    android:background="@drawable/comment" />
+                    android:background="@drawable/retweet_icon"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="sharePost"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="1,395" />
+                    android:text="1,395"
+                    android:layout_marginLeft="10dp"/>
 
-                <androidx.appcompat.widget.AppCompatImageButton
+                <ImageButton
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/share" />
-
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/heart"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="reactPost"></ImageButton>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="2,383" />
+                    android:text="28.6K"
+                    android:layout_marginLeft="10dp"></TextView>
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitCenter"
+                    android:background="@drawable/bookmark"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="bookmarkPost"></ImageButton>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

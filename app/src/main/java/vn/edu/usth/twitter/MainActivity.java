@@ -134,5 +134,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    private boolean liked = false;
+    public void reactPost(View view){
+        ImageButton button = (ImageButton) view;
+        int icon;
 
+        if (liked) {
+            liked = false;
+            icon = R.drawable.heart;
+        }
+        else {
+            liked = true;
+            icon = R.drawable.red_heart;
+        }
+
+        button.setBackgroundResource(icon);
+
+    }
+    private boolean bookmark = false;
+    public void bookmarkPost(View view){
+        ImageButton button = (ImageButton) view;
+        int icon;
+
+        if (bookmark) {
+            bookmark = false;
+            icon = R.drawable.bookmark;
+        }
+        else {
+            bookmark = true;
+            icon = R.drawable.bookmarked;
+        }
+
+        button.setBackgroundResource(icon);
+
+    }
 }
