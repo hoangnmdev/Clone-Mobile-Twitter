@@ -6,7 +6,7 @@
 ##  Description
 This is an UI application based on Twitter. Written in Java .
 
-# Members List Group 14
+## Members List Group 14
 | Student ID |        Name        | Major | Email address                   |
 |:----------:|:------------------:|:---:|:--------------------------------|
 |  BI12-156  | Nguyễn Quang Hiệp  |ICT| hiepnq.bi12-156@st.usth.edu.vn  |
