@@ -24,40 +24,6 @@ public class PremiumActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // Find your option TextViews by their IDs
-        monthly = findViewById(R.id.monthly);
-        yearly = findViewById(R.id.yearly);
-
-        // Set click listeners for the options
-        monthly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Handle option 1 selection
-                monthly.setSelected(true);
-                yearly.setSelected(false);
-
-                // Add your logic for option 1 here
-
-                // Optionally, you can change the text color or background color to indicate selection
-                monthly.setTextColor(getResources().getColor(R.color.black));
-                yearly.setTextColor(getResources().getColor(R.color.white));
-            }
-        });
-
-        yearly.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Handle option 2 selection
-                monthly.setSelected(false);
-                yearly.setSelected(true);
-
-                // Add your logic for option 2 here
-
-                // Optionally, you can change the text color or background color to indicate selection
-                yearly.setTextColor(getResources().getColor(R.color.black));
-                monthly.setTextColor(getResources().getColor(R.color.white));
-            }
-        });
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {

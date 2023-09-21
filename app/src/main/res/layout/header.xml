@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:paddingTop="30dp"
     android:layout_height="170dp"
-    android:gravity="bottom"
     android:background="@color/main_color"
     android:paddingLeft="20dp">
 
@@ -31,5 +30,28 @@
         android:layout_height="wrap_content"
         android:text="@string/profile_user_tagname"
         android:textSize="15sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/profile_follow"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_following">
+
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_followers">
+
+        </TextView>
+    </LinearLayout>
 </LinearLayout>
