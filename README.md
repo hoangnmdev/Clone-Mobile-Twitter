@@ -1,7 +1,6 @@
 # MOBILE APPLICATION DEVELOPMENT - GROUP PROJECT
 
-## Group : 14
-## Topic 1 : Twitter Clients 
+## Group : 14 /nTopic 1 : Twitter Clients 
 
 ##  Description
 
