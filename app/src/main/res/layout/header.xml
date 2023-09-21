@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:paddingTop="30dp"
-    android:layout_height="170dp"
+    android:paddingTop="50dp"
+    android:layout_height="200dp"
     android:background="@color/main_color"
     android:paddingLeft="20dp">
 
@@ -38,18 +38,19 @@
         android:layout_height="25dp"
         android:layout_marginBottom="15dp"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="@string/profile_following">
 
         </TextView>
 
         <TextView
-            android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="@string/profile_followers">
 
         </TextView>
