@@ -1,10 +1,12 @@
 # MOBILE APPLICATION DEVELOPMENT - GROUP PROJECT
 
-## Group : 14 /nTopic 1 : Twitter Clients 
+## Project's name : Twitter Clients
+## Group : 14 
 
 ##  Description
+This is an UI application based on Twitter. Written in Java .
 
-# Members List 
+# Members List Group 14
 | Student ID |        Name        | Major | Email address                   |
 |:----------:|:------------------:|:---:|:--------------------------------|
 |  BI12-156  | Nguyễn Quang Hiệp  |ICT| hiepnq.bi12-156@st.usth.edu.vn  |
