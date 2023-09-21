@@ -25,8 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/premium_title"
-                android:layout_marginLeft="110dp"
-                android:textSize="20sp"
+                android:layout_marginLeft="87dp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"/>
 
@@ -86,41 +86,6 @@
         android:layout_width="match_parent"
         android:layout_height="16dp"
         android:layout_below="@+id/text" />
-
-    <!-- Options Layout -->
-    <LinearLayout
-        android:id="@+id/optionsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@+id/space1"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
-        android:orientation="horizontal"
-        android:background="@color/black">
-
-        <!-- Option 1 -->
-        <TextView
-            android:id="@+id/monthly"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/premium_month"
-            android:textSize="16sp"
-            android:background="@drawable/option_selector" />
-
-        <!-- Option 2 -->
-        <TextView
-            android:id="@+id/yearly"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/premium_year"
-            android:textSize="16sp"
-            android:background="@drawable/option_selector"/>
-    </LinearLayout>
 
     <Space
         android:id="@+id/space2"
