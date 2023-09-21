@@ -4,32 +4,53 @@
     android:layout_width="match_parent"
     android:paddingTop="30dp"
     android:layout_height="170dp"
-    android:gravity="bottom"
     android:background="@color/main_color"
     android:paddingLeft="20dp">
 
     <ImageButton
-        android:layout_marginLeft="20dp"
         android:id="@+id/profile_image"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@drawable/round_button"
         android:clipToOutline="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/person_icon" />
+        android:src="@drawable/user6" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
         android:layout_marginTop="5dp"
-        android:text="Quang Hiep"
+        android:text="@string/profile_user_name"
         android:textColor="@color/black"
         android:textSize="17sp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/premium_user"
+        android:text="@string/profile_user_tagname"
         android:textSize="15sp"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/profile_follow"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_following">
+
+        </TextView>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_followers">
+
+        </TextView>
+    </LinearLayout>
 </LinearLayout>
