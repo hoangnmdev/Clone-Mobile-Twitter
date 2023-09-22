@@ -114,7 +114,10 @@
                     android:onClick="bookmarkPost"></ImageButton>
 
             </LinearLayout>
+
+
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
