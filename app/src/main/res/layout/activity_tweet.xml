@@ -45,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/editTextStatus"
-        android:layout_marginStart="258dp"
-        android:layout_marginBottom="-44dp"
+        android:layout_marginStart="249dp"
+        android:layout_marginBottom="-51dp"
         android:layout_toEndOf="@id/imageViewProfileIcon"
         android:text="0/280"
         android:textColor="@color/cardview_dark_background" />

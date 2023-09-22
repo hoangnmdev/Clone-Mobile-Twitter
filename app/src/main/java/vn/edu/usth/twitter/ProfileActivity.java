@@ -38,17 +38,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     protected void onStart() {
         super.onStart();
-        Log.i("Weather", "onStart() called");
     }
     @Override
     protected void onPause() {
         super.onPause();
-        Log.i("Weather", "onPause() called");
     }
     @Override
     protected void onStop() {
         super.onStop();
-        Log.i("Weather", "onStop() called");
     }
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 5;
