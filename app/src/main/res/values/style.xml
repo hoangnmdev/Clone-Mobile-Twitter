@@ -71,4 +71,111 @@
         <item name="android:textColor">#687684</item>
         <item name="android:textSize">20sp</item>
     </style>
+
+    <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Customize the search text color -->
+        <item name="android:editTextColor">@color/twitter_search_text_color</item>
+        <!-- Customize the hint text color -->
+        <item name="android:textColorHint">@color/twitter_search_hint_color</item>
+        <!-- Customize the close button color -->
+        <item name="colorControlNormal">@color/twitter_search_close_icon_color</item>
+        <!-- Customize the search icon color -->
+        <item name="colorControlActivated">@color/twitter_search_icon_color</item>
+    </style>
+
+    <style name="header_font">
+        <item name="android:textSize">19sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#141619</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="header2_font">
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#141619</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="search_content_font">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#687684</item>
+    </style>
+
+    <style name="change_location_font">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="noti_font">
+        <item name="android:textSize">17sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#141619</item>
+    </style>
+
+    <style name="message_font">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#687684</item>
+    </style>
+
+    <style name="rose_user">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#141619</item>
+    </style>
+
+    <!--name account-->
+    <style name="pixsellz">
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#141619</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--edit profile button-->
+    <style name="edit_profil">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--small pixsellz-->
+    <style name="smallpixsellz">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#687684</item>
+    </style>
+    <!--profile_detail-->
+    <style name="profle_detail">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#687684</item>
+    </style>
+    <!--number following & followers-->
+    <style name="num_fling_ers">
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name = "android:textStyle">bold</item>
+    </style>
+    <!--Posts-->
+    <style name="posts">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!--tab bars-->
+    <style name="tab_bars">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#687684</item>
+    </style>
+    <!--constructor-->
+    <style name="constructor">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">#4C9EEB</item>
+    </style>
 </resources>

@@ -1,326 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_profile"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@color/baby_blue">
+        android:layout_height="match_parent"
+        tools:context=".ProfileActivity"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    </androidx.appcompat.widget.Toolbar>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="119dp" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="68dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="75dp"
-        android:layout_marginLeft="20dp"
-        app:civ_border_width="5dp"
-        app:civ_border_color="@color/white"
-        android:src="@drawable/user6">
-
-    </de.hdodenhof.circleimageview.CircleImageView>
-
-    <TextView
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:text="    Edit profile"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="110dp"
-        android:gravity=""
-        android:textAppearance="@style/edit_profile_font"
-        android:background="@drawable/round_bg_blue_border">
-
-    </TextView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:layout_marginTop="100dp">
         <RelativeLayout
-            android:id="@+id/profile_name"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginLeft="20dp">
-            <TextView
-                android:id="@+id/user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_user_name"
-                android:textAppearance="@style/profile_user_name">
-            </TextView>
-            <TextView
-                android:id="@+id/user_tagname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_name"
-                android:text="@string/profile_user_tagname">
-
-            </TextView>
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/profile_intro"
+            android:id="@+id/bar"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/profile_name">
-            <LinearLayout
-                android:id="@+id/profile_joindate"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/calendar">
-                </ImageView>
-                <TextView
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Joined September 2023">
+            android:layout_height="0dp"
+            android:background="#4C9EEB"
+            app:layout_constraintBottom_toTopOf="@+id/guide_line"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
 
-                </TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/profile_follow"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_marginLeft="20dp"
+
+            <androidx.appcompat.widget.Toolbar
+                android:contentDescription="@string/back_icon"
+                android:id="@+id/toolbar_profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/profile_joindate"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profile_following">
+                android:background="@drawable/back_icon_pro">
 
-                </TextView>
-
-                <TextView
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/profile_followers">
-
-                </TextView>
-            </LinearLayout>
-
+            </androidx.appcompat.widget.Toolbar>
+            <ImageView
+                android:contentDescription="@string/search_icon"
+                android:id="@+id/searchIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="310dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_icon_pro" />
+            <ImageView
+                android:contentDescription="@string/option_icon"
+                android:id="@+id/optionIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/options_icon_pro" />
         </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/profile_content"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginTop="290dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Tweets">
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Tweets Replies">
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Media">
-            </TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Likes">
-            </TextView>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="60dp"
-            android:layout_height="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="#4C9EEB">
-
-        </View>
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_below="@+id/profile_content">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#e7ecf0">
-        </View>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="66dp"
-            android:layout_marginTop="5dp"
-            android:foregroundGravity="bottom"
-            android:src="@drawable/pin_solid_icon">
+            android:contentDescription="@string/profile_img"
+            android:id="@+id/imageView3"
+            android:layout_width="72dp"
+            android:layout_height="114dp"
+            android:layout_marginEnd="290dp"
+            app:layout_constraintBottom_toBottomOf="@id/guide_line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_line"
+            app:srcCompat="@drawable/img_profile" />
 
-        </ImageView>
-        <TextView
-            android:layout_width="87dp"
-            android:layout_height="17dp"
-            android:layout_marginLeft="80dp"
-            android:textColor="#687684"
-            android:textSize="10sp"
-            android:gravity="bottom"
-            android:text="@string/pinned_tweet">
-
-        </TextView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:layout_width="90dp"
+            android:layout_height="34dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_line"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/user6"></de.hdodenhof.circleimageview.CircleImageView>
-
-            <LinearLayout
+            android:layout_marginEnd="10dp">
+            <TextView
+                android:id="@+id/edit_profil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:text="@string/edit_profile"
+                android:textAppearance="@style/edit_profil"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:paddingTop="5dp"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingBottom="3dp">
+            <View
+                android:id="@+id/button_stro"
+                android:layout_width="200dp"
+                android:layout_height="30dp"
+                android:background="@drawable/button_pro" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:text="@string/profile_user_name" />
+        </RelativeLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/profile_user_tagname" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="@string/profile_tweet_date" >
-
-                    </TextView>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:text="Post Something"></TextView>
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:id="@+id/detailuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guide_line"
+            android:orientation="vertical"
+            app:layout_goneMarginTop="45dp">
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="87dp"
+                android:layout_weight="1"
+                android:layout_height="26dp"
+                android:text="@string/user_name"
+                android:textAppearance="@style/pixsellz"/>
+            <TextView
+                android:id="@+id/smallPixsellz"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/smallpixsellz"
+                android:textAppearance="@style/smallpixsellz"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="320dp"
+                    android:contentDescription="@string/calendar_icon"
+                    android:id="@+id/calendarIcon"
+                    android:layout_width="13dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/border_image"
-                    android:clipToOutline="true"
-                    android:src="@drawable/nav_profile_post"></ImageView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/calendar_pro" />
+                <TextView
+                    android:paddingTop="20dp"
+                    android:layout_width="0dp"
+                    android:id="@+id/signDate"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/comment"
-                        android:padding="0dp"
-                        android:scaleType="fitCenter"
-                        android:background="@android:color/transparent"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="commentPost"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2,383"
-                        android:layout_marginLeft="10dp"/>
-
-                    <ImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:background="@drawable/retweet_icon"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="sharePost"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1,395"
-                        android:layout_marginLeft="10dp"/>
-
-                    <ImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/heart"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="reactPost"></ImageButton>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="28.6K"
-                        android:layout_marginLeft="10dp"></TextView>
-                    <ImageButton
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:scaleType="fitCenter"
-                        android:background="@drawable/bookmark"
-                        android:layout_marginLeft="20dp"
-                        android:onClick="bookmarkPost"></ImageButton>
-
-                </LinearLayout>
+                    android:text="@string/joined_date"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="-5dp"
+                    android:textAppearance="@style/profle_detail"
+                    android:gravity="top"/>
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="411dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/detailuser">
+
+                <TextView
+                    android:id="@+id/followNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/number_following"
+                    android:textAppearance="@style/num_fling_ers"
+                    android:gravity="top"
+                    />
+
+                <TextView
+                    android:id="@+id/following"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/following"
+                    android:textAppearance="@style/profle_detail"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="0dp"/>
+                <TextView
+                    android:id="@+id/follownersNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/number_followers"
+                    android:textAppearance="@style/num_fling_ers"
+                    android:layout_marginStart="15dp"/>
+
+                <TextView
+                    android:id="@+id/followers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="0dp"
+                    android:textAppearance="@style/profle_detail"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </RelativeLayout>
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/horizontalLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="75dp"
+                android:layout_height="3dp"
+                android:background="#4C9EEB"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="2dp"
+                android:background="#D0D1D1" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="290dp">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+</FrameLayout>
 
 
