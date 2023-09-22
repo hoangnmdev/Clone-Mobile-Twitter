@@ -1,52 +1,4 @@
 <resources>
-    <string name="app_name">Twitter</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="rose_user"> "@roseannepics"</string>
-
-    <string name="gpt_user"> "@gptFAKE"</string>
-
-    <string name="noti_content1">"<b>SmenderTheDesinger</b> has a new Tweet!"</string>
-
-    <string name="noti_content1.1">"Creating meaningful experiences: an Introduction to User Experience design
-
-#ux #uxdesign #uxresearch #webdesign #design  " </string>
-
-    <string name="noti_content2">"<b>Sigma</b> and 2 others followed you </string>
-
-    <string name="bookmark_head">Bookmark the post for watching later</string>
-
-    <string name="bookmark_content">Bookmark posts snd make it easy to watch later</string>
-
-    <string name="list_header">Discover new list</string>
-
-    <string name="my_list">Your list</string>
-
-    <string name="more_op">More</string>
-
-    <string name="no_list">You have not created or followed any Lists. When you do that, those lists will appear here</string>
-
-    <string name="premium_title">Premium</string>
-
-    <string name="premium_month">Month</string>
-
-    <string name="premium_year">Year</string>
-
-    <string name="premium_content1">Premium subcribers
-                                    with a verified phone
-                                    number will get a blue
-                                    checkmark once
-                                    approved.
-
-    </string>
-
-    <string name="premium_content3">Premium</string>
-
-    <string name="premium_content2"><u>Show more</u></string>
-
     <string name="profile_user_name">"User_Name"</string>
 
     <string name="profile_user_tagname">"@user_name"</string>
@@ -54,8 +6,6 @@
     <string name="profile_following"><b>200</b> Following </string>
 
     <string name="profile_followers"><b>50</b> Followers </string>
-
-    <string name="pinned_tweet">Pinned Tweet</string>
 
     <string name="profile_tweet_date">&#8226; 19/9/23</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
