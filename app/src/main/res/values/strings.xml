@@ -59,9 +59,9 @@
 
     <!--profile bar-->
     <string name="app_name">TwitterProject</string>
-    <string name="user_name">Pixsellz</string>
+    <string name="user_name">User Name</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="smallpixsellz">@pixsellz</string>
+    <string name="smallpixsellz">"@user1"</string>
     <string name="joined_date">Joined July 2023</string>
     <string name="number_following">1</string>
     <string name="number_followers">2</string>
@@ -74,11 +74,11 @@
     <string name="media">Media</string>
     <string name="likes">Likes</string>
     <!--posts-->
-    <string name="pixsellz_7_">@pixsellz 2/3/23</string>
+    <string name="pixsellz_7_">"@user 2/3/23"</string>
     <string name="scheme_cons">Scheme Constructor - your ultimate prototyping kit for all  UX web
      and mobileepp desgin!</string>
     <string name="pinned_tweet">Pinned Tweet</string>
-    <string name="constructor">constructor.pixesellz.io</string>
+    <string name="constructor">constructor.smthing.io</string>
     <string name="prototyping">#prototyping #wireframe #uiux #ux</string>
     <string name="views">109 views</string>
     <string name="some_id">0:11</string>
@@ -93,11 +93,11 @@
     <!--media-->
     <string name="freebie_ale">Freebie Alert! ⚠ Mobile Apps Library consists of 120+ reconstructed screens of four popular mobile apps.</string>
     <string name="download">Download:</string>
-    <string name="dowload_app">apps.pixsellz.io</string>
+    <string name="dowload_app">apps.something.io</string>
     <string name="freebie_uid">#freebie #uidesign #whatsapp #messenger #instagram #sketchapp #figma</string>
     <!--likes-->
-    <string name="komol_kuchk">Komol Kuchkarov</string>
-    <string name="kkuchkarov_">@kkuchkarov· 6d</string>
+    <string name="komol_kuchk">New UserName</string>
+    <string name="kkuchkarov_">"@another_user· 6d"</string>
     <string name="when_we_fir">When we first launched Vector Mockups, I had wrote that in 2018 our free product downloads was 28K+ and we had set a goal to double this figure by the end of 2019. Today our team and I are glad to announce tgat we aave easily hit our goals with 47k+ downloads in 2019.</string>
     <!--content discription-->
     <string name="small_profile">small profile</string>
