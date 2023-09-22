@@ -1,219 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_profile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ProfileActivity"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="100dp"
+        android:background="@color/baby_blue">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guide_line"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="119dp" />
+    </androidx.appcompat.widget.Toolbar>
 
-        <RelativeLayout
-            android:id="@+id/bar"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="20dp"
+        app:civ_border_width="5dp"
+        app:civ_border_color="@color/white"
+        android:src="@drawable/user6">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <RelativeLayout
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="110dp"
+        android:background="@drawable/round_bg_blue_border">
+        <TextView
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="#4C9EEB"
-            app:layout_constraintBottom_toTopOf="@+id/guide_line"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp">
+            android:text="Edit Profile"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/edit_profile_font"/>
 
+    </RelativeLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:contentDescription="@string/back_icon"
-                android:id="@+id/toolbar_profile"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/back_icon_pro">
-
-            </androidx.appcompat.widget.Toolbar>
-            <ImageView
-                android:contentDescription="@string/search_icon"
-                android:id="@+id/searchIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="310dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/search_icon_pro" />
-            <ImageView
-                android:contentDescription="@string/option_icon"
-                android:id="@+id/optionIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/options_icon_pro" />
-        </RelativeLayout>
-
-        <ImageView
-            android:contentDescription="@string/profile_img"
-            android:id="@+id/imageView3"
-            android:layout_width="72dp"
-            android:layout_height="114dp"
-            android:layout_marginEnd="290dp"
-            app:layout_constraintBottom_toBottomOf="@id/guide_line"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide_line"
-            app:srcCompat="@drawable/img_profile" />
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginTop="100dp">
         <RelativeLayout
-            android:layout_width="90dp"
-            android:layout_height="34dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/guide_line"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp">
+            android:id="@+id/profile_name"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="20dp">
             <TextView
-                android:id="@+id/edit_profil"
+                android:id="@+id/user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/edit_profile"
-                android:textAppearance="@style/edit_profil"
-                android:paddingStart="10dp"
-                android:paddingEnd="0dp"
-                android:paddingTop="5dp"/>
-
-            <View
-                android:id="@+id/button_stro"
-                android:layout_width="200dp"
-                android:layout_height="30dp"
-                android:background="@drawable/button_pro" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_marginStart="20dp"
-            android:id="@+id/detailuser"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guide_line"
-            android:orientation="vertical"
-            app:layout_goneMarginTop="45dp">
+                android:text="@string/profile_user_name"
+                android:textAppearance="@style/profile_user_name">
+            </TextView>
             <TextView
-                android:id="@+id/userName"
-                android:layout_width="87dp"
-                android:layout_weight="1"
-                android:layout_height="26dp"
-                android:text="@string/user_name"
-                android:textAppearance="@style/pixsellz"/>
-            <TextView
-                android:id="@+id/smallPixsellz"
+                android:id="@+id/user_tagname"
                 android:layout_width="wrap_content"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/smallpixsellz"
-                android:textAppearance="@style/smallpixsellz"
-                />
+                android:layout_below="@+id/user_name"
+                android:text="@string/profile_user_tagname">
+
+            </TextView>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/profile_intro"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/profile_name">
             <LinearLayout
+                android:id="@+id/profile_joindate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
                 android:orientation="horizontal">
-
                 <ImageView
-                    android:contentDescription="@string/calendar_icon"
-                    android:id="@+id/calendarIcon"
-                    android:layout_width="13dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:src="@drawable/calendar_pro" />
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/calendar">
+                </ImageView>
                 <TextView
-                    android:paddingTop="20dp"
-                    android:layout_width="0dp"
-                    android:id="@+id/signDate"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/joined_date"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="-5dp"
-                    android:textAppearance="@style/profle_detail"
-                    android:gravity="top"/>
+                    android:layout_gravity="center"
+                    android:text="Joined September 2023">
+
+                </TextView>
             </LinearLayout>
-
-
             <LinearLayout
-                android:layout_width="411dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/detailuser">
+                android:id="@+id/profile_follow"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/profile_joindate"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/profile_following">
+
+                </TextView>
 
                 <TextView
-                    android:id="@+id/followNumber"
+                    android:layout_marginLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/number_following"
-                    android:textAppearance="@style/num_fling_ers"
-                    android:gravity="top"
-                    />
+                    android:text="@string/profile_followers">
 
-                <TextView
-                    android:id="@+id/following"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/following"
-                    android:textAppearance="@style/profle_detail"
-                    android:paddingStart="3dp"
-                    android:paddingEnd="0dp"/>
-                <TextView
-                    android:id="@+id/follownersNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/number_followers"
-                    android:textAppearance="@style/num_fling_ers"
-                    android:layout_marginStart="15dp"/>
-
-                <TextView
-                    android:id="@+id/followers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/followers"
-                    android:paddingStart="3dp"
-                    android:paddingEnd="0dp"
-                    android:textAppearance="@style/profle_detail"
-                    />
+                </TextView>
             </LinearLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 
 
-        <LinearLayout
-            android:id="@+id/horizontalLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <View
-                android:layout_width="75dp"
-                android:layout_height="3dp"
-                android:background="#4C9EEB"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="2dp"
-                android:background="#D0D1D1" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="290dp">
+        android:layout_marginTop="270dp">
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
@@ -224,6 +136,6 @@
                 android:layout_height="wrap_content" />
         </androidx.viewpager.widget.ViewPager>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>
 
 

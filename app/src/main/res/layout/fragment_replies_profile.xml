@@ -42,7 +42,7 @@
                         android:layout_marginTop="80dp"
                         android:background="@drawable/rectangle_pro" />
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:contentDescription="@string/small_profile"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
@@ -50,7 +50,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="32dp"
-                        android:src="@drawable/small_pro"
+                        android:src="@drawable/user6"
                         />
 
 
