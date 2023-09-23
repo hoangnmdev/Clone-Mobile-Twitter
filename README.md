@@ -4,8 +4,8 @@
 ## Group : 14 
 
 ##  Description
-This is an UI application based on Twitter. 
-Tool use     : Android Studio
+This is an UI application based on Twitter.\
+Tool use     : Android Studio\
 Language use : Java
 
 ## Members List Group 14
