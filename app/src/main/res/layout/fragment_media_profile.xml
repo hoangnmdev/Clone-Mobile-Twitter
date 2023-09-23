@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".PostProfileFragment">
+            <RelativeLayout
+                android:id="@+id/tweetbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <View
+                    android:id="@+id/down_arrow_"
+                    android:layout_width="12dp"
+                    android:layout_height="6dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="37dp"
+                    android:background="@drawable/down_arrow_icon_pro"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:contentDescription="@string/small_profile"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="32dp"
+                        android:src="@drawable/user5"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/pixsellz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/user_name"
+                        android:gravity="top"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/pixsellz_2_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="165dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/pixsellz_7_"
+                        android:gravity="top"
+                        android:textAppearance="@style/profle_detail"/>
+
+                    <TextView
+                        android:id="@+id/freebie_ale"
+                        android:layout_width="311dp"
+                        android:layout_height="62dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="60dp"
+                        android:text="@string/freebie_ale"
+                        android:lineSpacingExtra="1sp"
+                        android:translationY="-0.7sp"
+                        android:gravity="top"
+                        />
+
+                    <TextView
+                        android:id="@+id/download_ap"
+                        android:layout_width="193dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="130dp"
+                        android:text="@string/download"
+                        android:textAppearance="@style/profle_detail"
+                        />
+
+                    <TextView
+                        android:id="@+id/download_ap"
+                        android:layout_width="193dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="150dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="128dp"
+                        android:text="@string/dowload_app"
+                        android:textAppearance="@style/constructor"
+                        />
+
+                    <TextView
+                        android:id="@+id/freebie_uid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="200dp"
+                        android:text="@string/freebie_uid"
+                        android:textAppearance="@style/constructor"
+                        android:lineSpacingExtra="1sp"
+                        android:translationY="-0.7sp"
+                        android:gravity="top"
+                        />
+
+                    <View
+                        android:id="@+id/rectangle"
+                        android:layout_width="311dp"
+                        android:layout_height="175dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="270dp"
+                        android:background="@drawable/media_img_pro"
+                        />
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

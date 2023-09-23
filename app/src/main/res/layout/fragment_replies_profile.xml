@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".PostProfileFragment">
+            <RelativeLayout
+                android:id="@+id/tweetbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/down_arrow_"
+                    android:layout_width="12dp"
+                    android:layout_height="6dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="37dp"
+                    android:background="@drawable/down_arrow_icon_pro"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginEnd="20dp">
+
+                    <View
+                        android:id="@+id/background"
+                        android:layout_width="311dp"
+                        android:layout_height="79dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="84dp"
+                        android:layout_marginTop="80dp"
+                        android:background="@drawable/rectangle_pro" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:contentDescription="@string/small_profile"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="32dp"
+                        android:src="@drawable/user6"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/pixsellz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="19dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/user_name"
+                        android:gravity="top"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/pixsellz_2_"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="145dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/pixsellz_7_"
+                        android:gravity="top"
+                        android:textAppearance="@style/profle_detail"/>
+
+                    <TextView
+                        android:id="@+id/scheme_cons"
+                        android:layout_width="261dp"
+                        android:layout_height="62dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="83dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="51dp"
+                        android:text="@string/must_have_i"
+                        android:lineSpacingExtra="1sp"
+                        android:translationY="-0.7sp"
+                        android:gravity="top"
+                        android:textAppearance="@style/profle_detail"/>
+
+                    <View
+                        android:id="@+id/replies_png_i"
+                        android:layout_width="80dp"
+                        android:layout_height="79dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="85dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="75dp"
+                        android:background="@drawable/replies_img_pro"
+                        />
+
+                    <TextView
+                        android:id="@+id/the_best_fr"
+                        android:layout_width="206dp"
+                        android:layout_height="38dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="174dp"
+                        android:layout_marginTop="73dp"
+                        android:text="@string/the_best_fr"></TextView>
+
+                    <TextView
+                        android:id="@+id/graphicmama"
+                        android:layout_width="135dp"
+                        android:layout_height="19dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="174dp"
+                        android:layout_marginTop="116dp"
+                        android:text="@string/graphic_mama"
+                        android:textAppearance="@style/profle_detail" />
+                </RelativeLayout>
+                <View
+                    android:id="@+id/comment_str"
+                    android:layout_width="15dp"
+                    android:layout_height="14.51dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="84dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/comment_icon_pro"
+                    />
+
+                <View
+                    android:id="@+id/retweet_str"
+                    android:layout_width="17.88dp"
+                    android:layout_height="12.98dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="149.38dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/retweet_stroke_icon_pro"
+                    />
+
+                <View
+                    android:id="@+id/heart_strok"
+                    android:layout_width="15dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="216.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/heart_solid_icon_pro"
+                    />
+                <View
+                    android:id="@+id/share_strok"
+                    android:layout_width="15.25dp"
+                    android:layout_height="14.8dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="282.5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="11.2dp"
+                    android:background="@drawable/share_stroke_icon_pro"/>
+
+                <View
+                    android:id="@+id/activity_ic"
+                    android:layout_width="8.25dp"
+                    android:layout_height="14.75dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="365dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/activity_icon_pro"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

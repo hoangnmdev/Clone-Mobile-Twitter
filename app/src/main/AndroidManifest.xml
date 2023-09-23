@@ -27,6 +27,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".TweetActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

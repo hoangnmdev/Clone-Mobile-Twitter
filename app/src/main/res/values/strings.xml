@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">Twitter</string>
+    <string name="profile_user_name">"User_Name"</string>
+
+    <string name="profile_user_tagname">"@user_name"</string>
+
+    <string name="profile_following"><b>200</b> Following </string>
+
+    <string name="profile_followers"><b>50</b> Followers </string>
+
+    <string name="profile_tweet_date">&#8226; 19/9/23</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -36,10 +44,6 @@
     <string name="premium_month">Month</string>
 
     <string name="premium_year">Year</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
 
     <string name="premium_content1">Premium subcribers
                                     with a verified phone
@@ -53,17 +57,60 @@
 
     <string name="premium_content2"><u>Show more</u></string>
 
-    <string name="profile_user_name">"User_Name"</string>
-
-    <string name="profile_user_tagname">"@user_name"</string>
-
-    <string name="profile_following"><b>200</b> Following </string>
-
-    <string name="profile_followers"><b>50</b> Followers </string>
-
+    <!--profile bar-->
+    <string name="app_name">TwitterProject</string>
+    <string name="user_name">User Name</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="smallpixsellz">"@user1"</string>
+    <string name="joined_date">Joined July 2023</string>
+    <string name="number_following">1</string>
+    <string name="number_followers">2</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <!--tabs bar-->
+    <string name="posts">Posts</string>
+    <string name="replies">Replies</string>
+    <string name="highlights">Highlights</string>
+    <string name="media">Media</string>
+    <string name="likes">Likes</string>
+    <!--posts-->
+    <string name="pixsellz_7_">"@user 2/3/23"</string>
+    <string name="scheme_cons">Scheme Constructor - your ultimate prototyping kit for all  UX web
+     and mobileepp desgin!</string>
     <string name="pinned_tweet">Pinned Tweet</string>
+    <string name="constructor">constructor.smthing.io</string>
+    <string name="prototyping">#prototyping #wireframe #uiux #ux</string>
+    <string name="views">109 views</string>
+    <string name="some_id">0:11</string>
+    <string name="comment_num">2</string>
+    <string name="retweet_num">2</string>
+    <string name="tweet_likes">15</string>
 
-    <string name="profile_tweet_date">&#8226; 19/9/23</string>
-
+    <!--replies-->
+    <string name="must_have_i">Must have icon collection</string>
+    <string name="the_best_fr">The Best Free Icon Packs Everyone Must Download i...</string>
+    <string name="graphic_mama">graphicmama.com</string>
+    <!--media-->
+    <string name="freebie_ale">Freebie Alert! ⚠ Mobile Apps Library consists of 120+ reconstructed screens of four popular mobile apps.</string>
+    <string name="download">Download:</string>
+    <string name="dowload_app">apps.something.io</string>
+    <string name="freebie_uid">#freebie #uidesign #whatsapp #messenger #instagram #sketchapp #figma</string>
+    <!--likes-->
+    <string name="komol_kuchk">New UserName</string>
+    <string name="kkuchkarov_">"@another_user· 6d"</string>
+    <string name="when_we_fir">When we first launched Vector Mockups, I had wrote that in 2018 our free product downloads was 28K+ and we had set a goal to double this figure by the end of 2019. Today our team and I are glad to announce tgat we aave easily hit our goals with 47k+ downloads in 2019.</string>
+    <!--content discription-->
+    <string name="small_profile">small profile</string>
+    <string name="back_icon">back icon</string>
+    <string name="search_icon">search icon</string>
+    <string name="option_icon">option icon</string>
+    <string name="profile_img">profile image</string>
+    <string name="activity_icon">activity icon</string>
+    <string name="comment_icon">comment icon</string>
+    <string name="retweet_icon">retweet icon</string>
+    <string name="heart_icon">heart icon</string>
+    <string name="share_icon">share icon</string>
+    <string name="calendar_icon">calendar icon</string>
+    <string name="pin_soild_i">pin solid</string>
 
 </resources>

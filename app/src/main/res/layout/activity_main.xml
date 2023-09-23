@@ -67,6 +67,7 @@
                 <!-- Include a SearchView initially set to gone -->
                 <androidx.appcompat.widget.SearchView
                     android:id="@+id/search_view"
+                    android:imeOptions="actionGo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/custom_searchview_background"
@@ -76,40 +77,49 @@
                     app:queryBackground="@android:color/transparent"
                     app:searchViewStyle="@style/AppSearchViewStyle" />
             </androidx.appcompat.widget.Toolbar>
-
-            <!-- ViewPager2 Container -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
-
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPager"
+                <FrameLayout
+                    android:id="@+id/fragment_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                </androidx.viewpager2.widget.ViewPager2>
+                </FrameLayout>
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab"
+                    app:backgroundTint="@color/baby_blue"
+                    app:tint="@color/white"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
-                    app:backgroundTint="@color/baby_blue"
-                    app:tint="@color/white"
-                    android:src="@drawable/tweet"/>
+                    android:src="@drawable/tweet" />
             </FrameLayout>
 
-            <com.google.android.material.tabs.TabLayout
+             <com.google.android.material.bottomnavigation.BottomNavigationView
+                 android:id="@+id/bottom_navigation"
+                 android:layout_width="match_parent"
+                 android:layout_height="60dp"
+                 android:layout_gravity="bottom"
+                 android:background="@color/white"
+                 app:itemIconTint="@android:color/black"
+                 app:itemIconSize="25dp"
+                 app:labelVisibilityMode="labeled"
+                 app:menu="@menu/bot_menu"
+                 app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
+
+            <!--<com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-            </com.google.android.material.tabs.TabLayout>
+            </com.goo   gle.android.material.tabs.TabLayout>-->
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <!-- NavigationView (on top) -->
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -118,5 +128,6 @@
         app:menu="@menu/nav_menu"
         android:layout_gravity="start"
         android:paddingTop="20dp"/>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
