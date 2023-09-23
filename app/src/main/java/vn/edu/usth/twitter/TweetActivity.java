@@ -26,7 +26,7 @@ public class TweetActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        Button buttonPost = findViewById(R.id.buttonPostStatus);
+        Button buttonPost = findViewById(R.id.tweetButton);
         buttonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,4 +55,10 @@ public class TweetActivity extends AppCompatActivity {
 
         }
     };
+    private void sendDataToFragment(String text) {
+        MainActivity mainActivity = (MainActivity) getParent(); // If InputActivity is a child of MainActivity
+        if (mainActivity != null) {
+            mainActivity.onDataReceived(text);
+        }
+    }
 }

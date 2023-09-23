@@ -85,6 +85,8 @@
                     android:id="@+id/fragment_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                </FrameLayout>
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab"
                     app:backgroundTint="@color/baby_blue"
@@ -95,7 +97,6 @@
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="15dp"
                     android:src="@drawable/tweet" />
-                </FrameLayout>
             </FrameLayout>
 
              <com.google.android.material.bottomnavigation.BottomNavigationView

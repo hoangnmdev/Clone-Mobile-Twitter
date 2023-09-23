@@ -4,26 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,DataCommunicationListener{
 
     private static final String TAG = "Twitter";
     private DrawerLayout drawerLayout;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private Toolbar toolbar;
     private TabLayout tabLayout;
-
+    private List<PostItem> postItems;
     private FloatingActionButton fab ;
     private int[] tabIcons = {
             R.drawable.home_icon,
@@ -45,9 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsfeedFragment()).commit();
-
         /*----------------Hooks-----------------*/
         bottomNav = findViewById(R.id.bottom_navigation);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -94,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         bottomNav.setOnItemSelectedListener(navListener);
     }
+
 
 
     private void setToolbarTitle(String title) {
@@ -192,5 +190,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-
+    @Override
+    public void onDataReceived(String text) {
+        // Handle the received text data here
+        // You can then update the view in the fragment
+        NewsfeedFragment newsfeedFragment = (NewsfeedFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (newsfeedFragment != null) {
+            newsfeedFragment.updateViewWithText(text);
+            Toast.makeText(MainActivity.this,"Working!",Toast.LENGTH_SHORT);
+        }
+    }
 }

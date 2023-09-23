@@ -4,60 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewsfeedFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".NewsfeedFragment">
     <!-- Toolbar -->
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/main_color">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
+        tools:listitem="@layout/item_post">
 
-            <fragment
-                android:id="@+id/fragment_post"
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-
-            <fragment
-
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:id="@+id/fragment2_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-            <fragment
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:id="@+id/fragment3_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-            <fragment
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:id="@+id/fragment4_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-            <fragment
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:id="@+id/fragment5_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-            <fragment
-                android:name="vn.edu.usth.twitter.PostFragment"
-                android:id="@+id/fragment6_post"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_post"></fragment>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>
