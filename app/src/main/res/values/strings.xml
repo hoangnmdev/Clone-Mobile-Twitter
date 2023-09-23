@@ -112,5 +112,9 @@
     <string name="share_icon">share icon</string>
     <string name="calendar_icon">calendar icon</string>
     <string name="pin_soild_i">pin solid</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
 
 </resources>

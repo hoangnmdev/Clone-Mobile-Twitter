@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.drawable.notification_icon,
             R.drawable.inbox_icon,
     };
-    private Adapter pagerAdapter;
+
     private FirebaseAuth auth;
     private FirebaseUser firebaseUser;
     @SuppressLint("RestrictedApi")
@@ -81,27 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-
-        //----------Set MutiView---------------//
-        ViewPager2 viewPager = findViewById(R.id.viewPager);
-
-        // Create an adapter for your ViewPager2
-        pagerAdapter = new Adapter(this);
-
-        // Set the adapter to your ViewPager2
-        viewPager.setAdapter(pagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-
-        //---------------Link tabLayout with viewPager--------------//
-        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
-            // Set tab titles here if needed
-            tab.setIcon(tabIcons[position]);
-        }).attach();
         //------------------listen to item click ----------------//
-        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
