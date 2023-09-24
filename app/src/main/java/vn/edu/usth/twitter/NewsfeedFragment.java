@@ -16,8 +16,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +29,7 @@ import java.util.List;
 
 public class NewsfeedFragment extends Fragment {
 
-    private List<PostItem> postItems;
+    private List<PostItem> postItems = new ArrayList<>();
     private String[] listName;
     
     private int[] listUserProfileImage;
@@ -34,8 +37,11 @@ public class NewsfeedFragment extends Fragment {
     private RecyclerView recycleView;
     private String[] listContent;
     private int[] listContentImage;
+
+
+    PostAdapter postAdapter;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
-    DatabaseReference myRef = database.getReference(); // Replace with your Firebase node
+    DatabaseReference myRef = database.getReference("Post"); // Replace with your Firebase node
     public NewsfeedFragment() {
         // Required empty public constructor
     }
@@ -45,24 +51,61 @@ public class NewsfeedFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_newsfeed, container, false);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        datainitialize();
-
-
         recycleView = view.findViewById(R.id.recyclerview);
+        postAdapter = new PostAdapter(postItems, getContext());
         recycleView.setLayoutManager(new LinearLayoutManager(getContext()));
         recycleView.setHasFixedSize(true);
-        PostAdapter postAdapter = new PostAdapter(postItems, getContext());
         recycleView.setAdapter(postAdapter);
         postAdapter.notifyDataSetChanged();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Clear the existing data
+                postItems.clear();
+
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    String name = postSnapshot.child("UserName").getValue(String.class);
+                    String userId = postSnapshot.child("UserId").getValue(String.class);
+                    String content = postSnapshot.child("Content").getValue(String.class);
+                    int profileDrawableResourceId = 0; // Default value indicating no image
+                    int contentDrawableResourceId = 0; // Default value indicating no image
+
+                    String profileImageReference = postSnapshot.child("UserProfileImage").getValue(String.class);
+                    String contentImageReference = postSnapshot.child("ContentImage").getValue(String.class);
+
+
+                    profileDrawableResourceId = getResources().getIdentifier(profileImageReference, "drawable", getContext().getPackageName());
+
+
+                    contentDrawableResourceId = getResources().getIdentifier(contentImageReference, "drawable", getContext().getPackageName());
+
+
+// Now, create the PostItem with default or resolved drawable resource IDs
+                    PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentDrawableResourceId);
+
+                    // Add the postItem to your list
+                    postItems.add(0,postItem);
+                }
+                datainitialize();
+                postAdapter.notifyDataSetChanged();
+                // Update your adapter and notify data set changed to refresh the UI
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle any errors that occur during the database read operation
+            }
+        });
     }
 
     private void datainitialize(){
-        postItems = new ArrayList<>();
         /*String name, String id, String content, int profileImg, int comment, int rt, int like*/
         listName = new String[]{
                 getString(R.string.rose_user),

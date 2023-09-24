@@ -1,7 +1,10 @@
 package vn.edu.usth.twitter;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -9,9 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,13 +29,13 @@ public class TweetActivity extends AppCompatActivity {
     EditText editText;
     TextView char_count;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
+    DatabaseReference myRef = database.getReference("Post");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet);
 
         //------create back button------//
-
         Toolbar toolbar = findViewById(R.id.tweetToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,27 +75,28 @@ public class TweetActivity extends AppCompatActivity {
         String statusText = editText.getText().toString(); // Get the text from the EditText field
 
         if (!statusText.isEmpty()) {
-            // Initialize Firebase with your Firebase Realtime Database URL
-            FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
-
-            // Reference to your specific Firebase node
-            DatabaseReference myRef = database.getReference("Post"); // Replace with your Firebase node
 
             // Push data to Firebase with a unique key
             addPostToDb();
             // Clear the EditText field after sending
             Intent intent = new Intent(TweetActivity.this,MainActivity.class);
             startActivity(intent);
+
         }else {
             editText.setError("Cannot be empty!");
         }
     }
+
     private void addPostToDb(){
         HashMap<String, Object> map = new HashMap<>();
-        map.put("User",R.string.user_name);
-        map.put("UserId",R.string.profile_user_tagname);
+        String profileImageLink = "user6";
+        String postImageLink = "myuserpost";
+        String key = myRef.push().getKey();
+        map.put("UserName",getString(R.string.user_name));
+        map.put("UserProfileImage", profileImageLink);
+        map.put("UserId",getString(R.string.profile_user_tagname));
         map.put("Content",editText.getText().toString());
-
+        map.put("ContentImage", postImageLink);
+        myRef.child(key).setValue(map);
     }
-
 }
