@@ -17,16 +17,20 @@
         <item
             android:id="@+id/lists"
             android:title="Lists"
-            android:icon="@drawable/nav_icon_lists"/>
+            android:icon="@drawable/nav_icon_lists"
+            android:textColor="@color/baby_blue"/>
 
     </group>
-
     <item>
         <menu>
             <item
                 android:title="Profesional Tools"/>
             <item
                 android:title="Setting and Support"/>
+            <item
+                android:title="Logout"
+                android:id="@+id/logout_item">
+            </item>
         </menu>
     </item>
 </menu>

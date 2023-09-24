@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -14,15 +16,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,DataCommunicationListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "Twitter";
     private DrawerLayout drawerLayout;
@@ -38,7 +42,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.drawable.notification_icon,
             R.drawable.inbox_icon,
     };
-    //private Adapter pagerAdapter;
+
+    private FirebaseAuth auth;
+    private FirebaseUser firebaseUser;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
+//        database.getReference("message").child("123").setValue("312");
+
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
@@ -61,12 +71,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         /*---------Navigation Drawer Menu-----------*/
         navigationView.bringToFront();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         //------------------listen to item click ----------------//
-        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
@@ -90,8 +99,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         bottomNav.setOnItemSelectedListener(navListener);
-    }
 
+
+    }
 
 
     private void setToolbarTitle(String title) {
@@ -121,6 +131,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         if(id == R.id.lists){
             startActivity(new Intent(MainActivity.this, ListsActivity.class));
+        }
+        if(id == R.id.logout_item){
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         }
         return true;
     }
@@ -190,14 +205,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @Override
-    public void onDataReceived(String text) {
-        // Handle the received text data here
-        // You can then update the view in the fragment
-        NewsfeedFragment newsfeedFragment = (NewsfeedFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (newsfeedFragment != null) {
-            newsfeedFragment.updateViewWithText(text);
-            Toast.makeText(MainActivity.this,"Working!",Toast.LENGTH_SHORT);
-        }
-    }
+
 }
