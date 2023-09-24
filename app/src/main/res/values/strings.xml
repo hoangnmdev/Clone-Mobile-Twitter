@@ -1,5 +1,5 @@
 <resources>
-    <string name="profile_user_name">"User_Name"</string>
+    <string name="user_name">"User_Name"</string>
 
     <string name="profile_user_tagname">"@user_name"</string>
 
@@ -59,7 +59,6 @@
 
     <!--profile bar-->
     <string name="app_name">TwitterProject</string>
-    <string name="user_name">User Name</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="smallpixsellz">"@user1"</string>
     <string name="joined_date">Joined July 2023</string>
