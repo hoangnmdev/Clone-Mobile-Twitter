@@ -57,46 +57,52 @@ public class NewsfeedFragment extends Fragment {
         recycleView.setHasFixedSize(true);
         recycleView.setAdapter(postAdapter);
         postAdapter.notifyDataSetChanged();
-        myRef.addValueEventListener(new ValueEventListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Clear the existing data
-                postItems.clear();
+            public void run() {
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        // Clear the existing data
+                        postItems.clear();
 
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    String name = postSnapshot.child("UserName").getValue(String.class);
-                    String userId = postSnapshot.child("UserId").getValue(String.class);
-                    String content = postSnapshot.child("Content").getValue(String.class);
-                    int profileDrawableResourceId = 0; // Default value indicating no image
-                    int contentDrawableResourceId = 0; // Default value indicating no image
+                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                            String name = postSnapshot.child("UserName").getValue(String.class);
+                            String userId = postSnapshot.child("UserId").getValue(String.class);
+                            String content = postSnapshot.child("Content").getValue(String.class);
+                            int profileDrawableResourceId = 0; // Default value indicating no image
+                            int contentDrawableResourceId = 0; // Default value indicating no image
 
-                    String profileImageReference = postSnapshot.child("UserProfileImage").getValue(String.class);
-                    String contentImageReference = postSnapshot.child("ContentImage").getValue(String.class);
-
-
-                    profileDrawableResourceId = getResources().getIdentifier(profileImageReference, "drawable", getContext().getPackageName());
+                            String profileImageReference = postSnapshot.child("UserProfileImage").getValue(String.class);
+                            String contentImageReference = postSnapshot.child("ContentImage").getValue(String.class);
 
 
-                    contentDrawableResourceId = getResources().getIdentifier(contentImageReference, "drawable", getContext().getPackageName());
+                            profileDrawableResourceId = getResources().getIdentifier(profileImageReference, "drawable", getContext().getPackageName());
+
+
+                            contentDrawableResourceId = getResources().getIdentifier(contentImageReference, "drawable", getContext().getPackageName());
 
 
 // Now, create the PostItem with default or resolved drawable resource IDs
-                    PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentDrawableResourceId);
+                            PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentDrawableResourceId);
 
-                    // Add the postItem to your list
-                    postItems.add(0,postItem);
-                }
-                datainitialize();
-                postAdapter.notifyDataSetChanged();
-                // Update your adapter and notify data set changed to refresh the UI
+                            // Add the postItem to your list
+                            postItems.add(0,postItem);
+                        }
+                        datainitialize();
+                        postAdapter.notifyDataSetChanged();
+                        // Update your adapter and notify data set changed to refresh the UI
 
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle any errors that occur during the database read operation
+                    }
+                });
             }
+        }).start();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle any errors that occur during the database read operation
-            }
-        });
     }
 
     private void datainitialize(){

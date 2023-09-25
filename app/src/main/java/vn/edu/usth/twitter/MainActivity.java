@@ -55,9 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        String userEmail = currentUser.getEmail();
+
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsfeedFragment()).commit();
         /*----------------Hooks-----------------*/
         bottomNav = findViewById(R.id.bottom_navigation);
@@ -66,7 +64,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
-
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String userEmail = currentUser.getEmail();
         TextView nav_userName =  headerView.findViewById(R.id.nav_username);
         TextView nav_userTagname = headerView.findViewById(R.id.nav_usertagname);
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");

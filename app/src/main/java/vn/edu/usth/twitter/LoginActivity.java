@@ -2,6 +2,7 @@ package vn.edu.usth.twitter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -20,13 +21,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private Handler mHandler;
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLog;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
-    String userEmail;
+    String userEmail,email,password;
 
     @Override
     public void onStart(){
@@ -56,10 +57,27 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf((editTextPassword.getText()));
+                signin();
 
+
+
+            }
+        });
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
+    }
+    private void signin(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
                 if(TextUtils.isEmpty(email)) {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
@@ -91,17 +109,8 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-
             }
-        });
-
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-            }
-        });
+        }).start();
 
     }
 }
