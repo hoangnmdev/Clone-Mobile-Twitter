@@ -51,17 +51,17 @@
             android:layout_marginTop="45dp"
             android:layout_marginLeft="20dp">
             <TextView
-                android:id="@+id/user_name"
+                android:id="@+id/profile_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/user_name"
                 android:textAppearance="@style/profile_user_name">
             </TextView>
             <TextView
-                android:id="@+id/user_tagname"
+                android:id="@+id/profile_user_tagname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/user_name"
+                android:layout_below="@+id/profile_user_name"
                 android:text="@string/profile_user_tagname">
 
             </TextView>
