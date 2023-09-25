@@ -19,6 +19,7 @@
         android:src="@drawable/user6" />
 
     <TextView
+        android:id="@+id/nav_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
@@ -27,6 +28,7 @@
         android:textColor="@color/black"
         android:textSize="17sp" />
     <TextView
+        android:id="@+id/nav_usertagname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/profile_user_tagname"

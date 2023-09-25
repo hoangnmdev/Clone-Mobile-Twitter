@@ -1,8 +1,5 @@
 package vn.edu.usth.twitter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +8,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,14 +26,15 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
-
+    String userEmail;
 
     @Override
     public void onStart(){
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            userEmail = currentUser.getEmail();
+            startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("email",userEmail));
             finish();
         }
     }
@@ -76,7 +77,13 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                                    FirebaseUser currentUser = mAuth.getCurrentUser();
+                                    if(currentUser != null){
+                                        userEmail = currentUser.getEmail();
+                                        Toast.makeText(LoginActivity.this,userEmail,Toast.LENGTH_SHORT);
+                                        startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("email",userEmail));
+                                        finish();
+                                    }
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",

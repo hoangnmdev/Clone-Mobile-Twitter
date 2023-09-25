@@ -16,8 +16,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
-    private List<PostItem> postItems;
-    private Context context;
+    private final List<PostItem> postItems;
+    private final Context context;
 
     public PostAdapter(List<PostItem> postItems, Context context) {
         this.postItems = postItems;

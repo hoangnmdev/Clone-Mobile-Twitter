@@ -110,13 +110,14 @@
                     android:layout_height="wrap_content"
                     android:text="28.6K"
                     android:layout_marginLeft="10dp"></TextView>
+
                 <ImageButton
-                    android:layout_width="20dp"
+                    android:layout_width="25dp"
                     android:layout_height="20dp"
-                    android:scaleType="fitCenter"
+                    android:layout_marginLeft="17dp"
                     android:background="@drawable/bookmark"
-                    android:layout_marginLeft="20dp"
-                    android:onClick="bookmarkPost"></ImageButton>
+                    android:onClick="bookmarkPost"
+                    android:scaleType="fitCenter"></ImageButton>
 
             </LinearLayout>
 

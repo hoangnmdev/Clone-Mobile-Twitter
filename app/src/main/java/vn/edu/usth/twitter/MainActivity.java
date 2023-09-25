@@ -1,71 +1,107 @@
 package vn.edu.usth.twitter;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import java.util.List;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "Twitter";
+
+    private String userName,userTagname,dbEmail;
     private DrawerLayout drawerLayout;
     private BottomNavigationView bottomNav;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private TabLayout tabLayout;
-    private List<PostItem> postItems;
     private FloatingActionButton fab ;
-    private int[] tabIcons = {
+    String userEmail;
+    private final int[] tabIcons = {
             R.drawable.home_icon,
             R.drawable.search_icon,
             R.drawable.notification_icon,
             R.drawable.inbox_icon,
     };
 
-    private FirebaseAuth auth;
+    private FirebaseAuth mAuth;
     private FirebaseUser firebaseUser;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String userEmail = currentUser.getEmail();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsfeedFragment()).commit();
         /*----------------Hooks-----------------*/
         bottomNav = findViewById(R.id.bottom_navigation);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
 
+        TextView nav_userName =  headerView.findViewById(R.id.nav_username);
+        TextView nav_userTagname = headerView.findViewById(R.id.nav_usertagname);
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
-//        database.getReference("message").child("123").setValue("312");
+        DatabaseReference userRef = database.getReference("Users");
 
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    dbEmail = dataSnapshot.child("email").getValue(String.class);
+
+                    if (dbEmail != null && dbEmail.equals(userEmail)) {
+                        userName = dataSnapshot.child("name").getValue(String.class);
+                        userTagname = dataSnapshot.child("tagName").getValue(String.class);
+
+                        // Set the TextViews with user data
+                        nav_userName.setText(userName);
+                        nav_userTagname.setText(userTagname);
+
+                        // You may break out of the loop since you found the user
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error if needed
+            }
+        });
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
         /*---------Hide title in tool bar--------*/
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
@@ -80,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         //------------------Click on profile image in navigation view to open the profile activity----------//
-        View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
+
         ImageButton imageButton = headerView.findViewById(R.id.profile_image);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,21 +128,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         /*-------Click on floating action button to open tweet activity---------*/
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, TweetActivity.class));
-            }
-        });
+        fab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TweetActivity.class)));
         bottomNav.setOnItemSelectedListener(navListener);
 
 
     }
 
-
-    private void setToolbarTitle(String title) {
-        getSupportActionBar().setTitle(title);
-    }
 
     /*--------Set icon to tablayout(Not used yet)------*/
     private void setupTabIcons() {

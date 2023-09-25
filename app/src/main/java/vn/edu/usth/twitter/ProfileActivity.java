@@ -1,15 +1,14 @@
 package vn.edu.usth.twitter;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.widget.Toolbar;
-import androidx.annotation.NonNull;
-import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,14 +23,13 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         PagerAdapter adapter = new HomeFragmentPagerAdapter(
                 getSupportFragmentManager());
-        ViewPager pager = (ViewPager) findViewById(R.id.pager);
+        ViewPager pager = findViewById(R.id.pager);
         pager.setOffscreenPageLimit(5);
         pager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.header);
+        TabLayout tabLayout =  findViewById(R.id.header);
         tabLayout.setupWithViewPager(pager);
     }
     @Override
@@ -49,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 5;
-        private String titles[] = new String[] { "Post", "Replies", "Highlight", "Media", "Likes" };
+        private final String[] titles = new String[] { "Post", "Replies", "Highlight", "Media", "Likes" };
         public HomeFragmentPagerAdapter(FragmentManager fm) {
             super(fm);
         }
