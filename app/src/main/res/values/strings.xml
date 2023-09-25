@@ -58,7 +58,7 @@
     <string name="premium_content2"><u>Show more</u></string>
 
     <!--profile bar-->
-    <string name="app_name">TwitterProject</string>
+    <string name="app_name">Twitter</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="smallpixsellz">"@user1"</string>
     <string name="joined_date">Joined July 2023</string>
