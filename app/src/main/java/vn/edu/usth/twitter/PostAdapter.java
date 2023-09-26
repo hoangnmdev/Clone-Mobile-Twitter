@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -39,7 +41,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.userName.setText(postItem.getName());
         holder.userId.setText(postItem.getId());
         holder.postContent.setText((postItem.getContent()));
-        holder.imageContent.setImageResource(postItem.getImageContent());
+        Glide.with(context)
+                .load(postItem.getImageUrl()) // Assuming getContentImage() returns the content image URL as a String
+                .into(holder.imageContent);
     }
 
     @Override
@@ -52,7 +56,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public TextView userName;
         public TextView userId;
         public TextView postContent;
-
         public ImageView imageContent;
         public ViewHolder(View postView) {
             super(postView);

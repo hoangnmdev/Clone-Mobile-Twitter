@@ -71,7 +71,6 @@ public class NewsfeedFragment extends Fragment {
                             String userId = postSnapshot.child("UserId").getValue(String.class);
                             String content = postSnapshot.child("Content").getValue(String.class);
                             int profileDrawableResourceId = 0; // Default value indicating no image
-                            int contentDrawableResourceId = 0; // Default value indicating no image
 
                             String profileImageReference = postSnapshot.child("UserProfileImage").getValue(String.class);
                             String contentImageReference = postSnapshot.child("ContentImage").getValue(String.class);
@@ -80,11 +79,10 @@ public class NewsfeedFragment extends Fragment {
                             profileDrawableResourceId = getResources().getIdentifier(profileImageReference, "drawable", getContext().getPackageName());
 
 
-                            contentDrawableResourceId = getResources().getIdentifier(contentImageReference, "drawable", getContext().getPackageName());
 
 
-// Now, create the PostItem with default or resolved drawable resource IDs
-                            PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentDrawableResourceId);
+                            // Now, create the PostItem with default or resolved drawable resource IDs
+                            PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentImageReference);
 
                             // Add the postItem to your list
                             postItems.add(0,postItem);
@@ -107,7 +105,7 @@ public class NewsfeedFragment extends Fragment {
 
     private void datainitialize(){
         /*String name, String id, String content, int profileImg, int comment, int rt, int like*/
-        listName = new String[]{
+        /*listName = new String[]{
                 getString(R.string.rose_user),
                 "GPT",
                 "Adobe Photoshop",
@@ -143,18 +141,18 @@ public class NewsfeedFragment extends Fragment {
                 R.drawable.user3,
                 R.drawable.user_4,
                 R.drawable.user5,
-        };
+        };*/
 
-        for (int i = 0; i < listName.length; i++){
+        /*for (int i = 0; i < listName.length; i++){
             PostItem postItem = new PostItem(listName[i],listUserProfileImage[i],listUserId[i],listContent[i],listContentImage[i]);
             postItems.add(postItem);
-            /*HashMap<String,Object> map = new HashMap<>();
+            *//*HashMap<String,Object> map = new HashMap<>();
             map.put("Name",listName[i]);
             map.put("UserId",listUserId[i]);
             map.put("Profile Image",listUserProfileImage);
             map.put("Content",listContent[i]);
-            map.put("Image",listContentImage[i]);*/
+            map.put("Image",listContentImage[i]);*//*
 
-        }
+        }*/
     }
 }
