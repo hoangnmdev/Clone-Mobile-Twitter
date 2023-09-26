@@ -1,6 +1,7 @@
 package vn.edu.usth.twitter;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,20 +46,29 @@ public class ProfileActivity extends AppCompatActivity {
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String dbEmail = dataSnapshot.child("email").getValue(String.class);
-                    if (dbEmail != null && dbEmail.equals(userEmail)) {
-                        String userName = dataSnapshot.child("name").getValue(String.class);
-                        String userTagname = dataSnapshot.child("tagName").getValue(String.class);
-
-                        // Set the TextViews with user data
-                        textViewUserName.setText(userName);
-                        textViewUserTagname.setText(userTagname);
-
-                        // You may break out of the loop since you found the user
-                        break;
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            String dbEmail = dataSnapshot.child("email").getValue(String.class);
+                            if (dbEmail != null && dbEmail.equals(userEmail)) {
+                                String userName = dataSnapshot.child("name").getValue(String.class);
+                                String userTagname = dataSnapshot.child("tagName").getValue(String.class);
+                                // Set the TextViews with user data
+                                runOnUiThread(new Runnable() {
+                                                  @Override
+                                                  public void run() {
+                                                      textViewUserName.setText(userName);
+                                                      textViewUserTagname.setText(userTagname);
+                                                  }
+                                              });
+                                // You may break out of the loop since you found the user
+                                break;
+                            }
+                        }
                     }
-                }
+                }).start();
+
             }
 
             @Override
