@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DatabaseReference userRef = database.getReference("Users");
 
         userRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -81,10 +82,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (dbEmail != null && dbEmail.equals(userEmail)) {
                         userName = dataSnapshot.child("name").getValue(String.class);
                         userTagname = dataSnapshot.child("tagName").getValue(String.class);
-
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                nav_userName.setText(userName);
+                                nav_userTagname.setText(userTagname);
+                            }
+                        });
                         // Set the TextViews with user data
-                        nav_userName.setText(userName);
-                        nav_userTagname.setText(userTagname);
+
 
                         // You may break out of the loop since you found the user
                         break;
