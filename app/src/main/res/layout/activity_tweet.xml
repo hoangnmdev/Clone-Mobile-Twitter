@@ -40,19 +40,6 @@
         android:inputType="textMultiLine"
         android:minLines="3" />
 
-    <Button
-        android:id="@+id/chooseImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="286dp"
-        android:layout_marginEnd="125dp"
-        android:background="@drawable/round_bg_white"
-        android:clipToOutline="true"
-        android:text="Choose Image" />
-
     <TextView
         android:id="@+id/textViewCharacterCount"
         android:layout_width="wrap_content"
@@ -65,6 +52,29 @@
         android:textColor="@color/cardview_dark_background" />
 
     <Button
+        android:id="@+id/chooseImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="141dp"
+        android:background="@drawable/round_bg_white"
+        android:clipToOutline="true"
+        android:text="Choose Image" />
+
+    <ImageView
+        android:id="@+id/tweetImageView"
+        android:layout_width="356dp"
+        android:layout_height="293dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="102dp"
+        android:background="@drawable/round_bg"
+        android:clipToOutline="true" />
+
+    <Button
         android:id="@+id/tweetButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -73,6 +83,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="11dp"
         android:backgroundTint="@color/baby_blue"
+
         android:text="Post Status"
         android:textColor="@android:color/white"
         android:onClick="Tweet"/>
