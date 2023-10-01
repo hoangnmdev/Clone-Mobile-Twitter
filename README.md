@@ -6,8 +6,6 @@
 ##  Description
 This is an UI application based on Twitter.\
 Tool use     : Android Studio\
-Language use : Java
-
 ## Members List Group 14
 | Student ID |        Name        | Major | Email address                   |
 |:----------:|:------------------:|:---:|:--------------------------------|
