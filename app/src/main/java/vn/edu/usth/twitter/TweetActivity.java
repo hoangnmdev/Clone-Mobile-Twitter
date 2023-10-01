@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -65,7 +66,6 @@ public class TweetActivity extends AppCompatActivity {
     Uri selectedImageUri;
     private StorageReference fileRef;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet);
@@ -79,33 +79,34 @@ public class TweetActivity extends AppCompatActivity {
         userEmail = currentUser.getEmail();
         storageRef = FirebaseStorage.getInstance().getReference("uploads");
 
-        //------create back button------//
+        // Create back button
         Toolbar toolbar = findViewById(R.id.tweetToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Log.i(TAG, userEmail);
         chooseImage = findViewById(R.id.chooseImageButton);
         editText = findViewById(R.id.editTextStatus);
         imageChoseView = findViewById(R.id.tweetImageView);
         char_count = findViewById(R.id.textViewCharacterCount);
         editText.addTextChangedListener(mTextEditorWatcher);
         takePhoto = findViewById(R.id.takePhotoButton);
-        if(ContextCompat.checkSelfPermission(TweetActivity.this, Manifest.permission.CAMERA)
-        != PackageManager.PERMISSION_GRANTED){
+
+        if (ContextCompat.checkSelfPermission(TweetActivity.this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(TweetActivity.this, new String[]{
                     Manifest.permission.CAMERA
-            },100);
+            }, 100);
         }
 
         takePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent,100);
+                startActivityForResult(intent, 100);
             }
         });
+
         chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,44 +116,44 @@ public class TweetActivity extends AppCompatActivity {
     }
 
     void imageChooser() {
-        // create an instance of the intent of the type image
+        // Create an instance of the intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-        // pass the constant to compare it with the returned requestCode
+        // Pass the constant to compare it with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if(requestCode == 100){
+                if (requestCode == 100) {
                     bitmap = (Bitmap) data.getExtras().get("data");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
                             imageChoseView.setImageBitmap(bitmap);
                         }
                     });
+
                     baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     imageData = baos.toByteArray();
                 }
                 if (resultCode == RESULT_OK) {
-                    // compare the resultCode with the SELECT_PICTURE constant
+                    // Compare the resultCode with the SELECT_PICTURE constant
                     if (requestCode == SELECT_PICTURE) {
-                        // Get the url of the image from data
+                        // Get the URL of the image from data
                         selectedImageUri = data.getData();
-                        if (null != selectedImageUri) {
+                        imageChoseView.setImageURI(null);
+                        if (selectedImageUri != null) {
+                            // Update the preview image in the layout
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    // update the preview image in the layout
                                     imageChoseView.setImageURI(selectedImageUri);
                                     imageChoseView.setBackgroundColor(R.drawable.black_image);
                                 }
@@ -163,7 +164,6 @@ public class TweetActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
     }
 
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
@@ -171,13 +171,12 @@ public class TweetActivity extends AppCompatActivity {
         }
 
         public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // This sets a textview to the current length
+            // Set a textview to the current length
             char_count.setText(s.length() + "/280");
         }
 
         @Override
         public void afterTextChanged(Editable editable) {
-
         }
     };
 
@@ -205,40 +204,44 @@ public class TweetActivity extends AppCompatActivity {
                         addPostToDb(statusText, null);
                     }
                 } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            editText.setError("Cannot be empty!");
-                        }
-                    });
-
+                    editText.setError("Cannot be empty!");
                 }
             }
+
+
         }).start();
 
     }
+
     private void uploadImageToStorageBitmap(String statusText) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // Adjust compression quality as needed
         bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
         byte[] imageData = baos.toByteArray();
+
+        // Create a reference to the Firebase Storage location where you want to store the image
         String fileName = System.currentTimeMillis() + ".jpg";
-        fileRef = storageRef.child(fileName);
+        StorageReference fileRef = storageRef.child(fileName);
+
+        // Upload the image data to Firebase Storage
         UploadTask uploadTask = fileRef.putBytes(imageData);
 
         uploadTask.addOnFailureListener(e -> {
             // Handle the error, e.g., show a toast message
-            Log.e(TAG, e.toString());
+            Log.e(TAG, "Image upload failed: " + e.getMessage());
             Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show();
         }).addOnSuccessListener(taskSnapshot -> {
-            fileRef.getDownloadUrl().addOnSuccessListener(url -> {
-                String imageUrl = url.toString();
+            // Image uploaded successfully, get the download URL
+            fileRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                String imageUrl = uri.toString();
+                // Now you can use 'imageUrl' to store in your database or display the image
+                Log.d(TAG, "Image URL: " + imageUrl);
                 addPostToDb(statusText, imageUrl);
+
             });
         }).addOnProgressListener(taskSnapshot -> {
-            // Calculate and display the upload progress here
+            // Calculate and display the upload progress here if needed
             double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-            // Update UI with the progress, e.g., using a progress bar
+            Log.d(TAG, "Upload progress: " + progress + "%");
         });
     }
 
@@ -293,9 +296,12 @@ public class TweetActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 // Database write was successful
-                                runOnUiThread(() -> {
-                                    Intent intent = new Intent(TweetActivity.this, MainActivity.class);
-                                    startActivity(intent);
+                                new Handler().post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent intent = new Intent(TweetActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
                                 });
                             }
                         })
@@ -303,8 +309,11 @@ public class TweetActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 // Handle the error in case of a database write failure
-                                runOnUiThread(() -> {
-                                    Toast.makeText(TweetActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                new Handler().post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(TweetActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
                                 });
                             }
                         });
@@ -313,8 +322,11 @@ public class TweetActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle error if needed
-                runOnUiThread(() -> {
-                    Toast.makeText(TweetActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(TweetActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+                    }
                 });
             }
         });
