@@ -4,8 +4,7 @@
 ## Group : 14 
 
 ##  Description
-This is an UI application based on Twitter.\
-Tool use     : Android Studio\
+This is an UI application based on Twitter.
 ## Members List Group 14
 | Student ID |        Name        | Major | Email address                   |
 |:----------:|:------------------:|:---:|:--------------------------------|
