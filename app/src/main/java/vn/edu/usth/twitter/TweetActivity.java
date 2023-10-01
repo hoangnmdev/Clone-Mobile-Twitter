@@ -125,26 +125,45 @@ public class TweetActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 100){
-            bitmap = (Bitmap) data.getExtras().get("data");
-            imageChoseView.setImageBitmap(bitmap);
-            baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-            imageData = baos.toByteArray();
-        }
-        if (resultCode == RESULT_OK) {
-            // compare the resultCode with the SELECT_PICTURE constant
-            if (requestCode == SELECT_PICTURE) {
-                // Get the url of the image from data
-                selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    // update the preview image in the layout
-                    imageChoseView.setImageURI(selectedImageUri);
-                    imageChoseView.setBackgroundColor(R.drawable.black_image);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(requestCode == 100){
+                    bitmap = (Bitmap) data.getExtras().get("data");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            imageChoseView.setImageBitmap(bitmap);
+                        }
+                    });
+                    baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    imageData = baos.toByteArray();
+                }
+                if (resultCode == RESULT_OK) {
+                    // compare the resultCode with the SELECT_PICTURE constant
+                    if (requestCode == SELECT_PICTURE) {
+                        // Get the url of the image from data
+                        selectedImageUri = data.getData();
+                        if (null != selectedImageUri) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // update the preview image in the layout
+                                    imageChoseView.setImageURI(selectedImageUri);
+                                    imageChoseView.setBackgroundColor(R.drawable.black_image);
+                                }
+                            });
+
+                        }
+                    }
                 }
             }
-        }
+        }).start();
+
     }
 
     private final TextWatcher mTextEditorWatcher = new TextWatcher() {
