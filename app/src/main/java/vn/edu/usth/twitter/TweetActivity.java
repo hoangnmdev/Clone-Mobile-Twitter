@@ -1,42 +1,13 @@
 package vn.edu.usth.twitter;
 
+import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.webkit.MimeTypeMap;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.HashMap;
-
-import android.content.ContentResolver;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -61,7 +32,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 
 public class TweetActivity extends AppCompatActivity {
     private static final String TAG = "TweetActivity";
@@ -78,6 +56,11 @@ public class TweetActivity extends AppCompatActivity {
     private FirebaseUser currentUser;
     private String userEmail;
     private Button chooseImage;
+
+    private Button takePhoto;
+    Bitmap bitmap;
+    ByteArrayOutputStream baos;
+    byte[] imageData;
     private ImageView imageChoseView;
     Uri selectedImageUri;
     private StorageReference fileRef;
@@ -108,7 +91,21 @@ public class TweetActivity extends AppCompatActivity {
         imageChoseView = findViewById(R.id.tweetImageView);
         char_count = findViewById(R.id.textViewCharacterCount);
         editText.addTextChangedListener(mTextEditorWatcher);
+        takePhoto = findViewById(R.id.takePhotoButton);
+        if(ContextCompat.checkSelfPermission(TweetActivity.this, Manifest.permission.CAMERA)
+        != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(TweetActivity.this, new String[]{
+                    Manifest.permission.CAMERA
+            },100);
+        }
 
+        takePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,100);
+            }
+        });
         chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,7 +126,13 @@ public class TweetActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if(requestCode == 100){
+            bitmap = (Bitmap) data.getExtras().get("data");
+            imageChoseView.setImageBitmap(bitmap);
+            baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            imageData = baos.toByteArray();
+        }
         if (resultCode == RESULT_OK) {
             // compare the resultCode with the SELECT_PICTURE constant
             if (requestCode == SELECT_PICTURE) {
@@ -168,19 +171,56 @@ public class TweetActivity extends AppCompatActivity {
     public void Tweet(View view) {
         editText = findViewById(R.id.editTextStatus);
         String statusText = editText.getText().toString();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!statusText.isEmpty()) {
+                    // Check if an image is selected
+                    if (selectedImageUri != null) {
+                        // Upload the selected image to Firebase Storage
+                        uploadImageToStorage(statusText);
+                    } else if (imageData != null) {
+                        uploadImageToStorageBitmap(statusText);
+                    } else {
+                        // No image selected, proceed with adding the post without an image
+                        addPostToDb(statusText, null);
+                    }
+                } else {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            editText.setError("Cannot be empty!");
+                        }
+                    });
 
-        if (!statusText.isEmpty()) {
-            // Check if an image is selected
-            if (selectedImageUri != null) {
-                // Upload the selected image to Firebase Storage
-                uploadImageToStorage(statusText);
-            } else {
-                // No image selected, proceed with adding the post without an image
-                addPostToDb(statusText, null);
+                }
             }
-        } else {
-            editText.setError("Cannot be empty!");
-        }
+        }).start();
+
+    }
+    private void uploadImageToStorageBitmap(String statusText) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // Adjust compression quality as needed
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, baos);
+        byte[] imageData = baos.toByteArray();
+        String fileName = System.currentTimeMillis() + ".jpg";
+        fileRef = storageRef.child(fileName);
+        UploadTask uploadTask = fileRef.putBytes(imageData);
+
+        uploadTask.addOnFailureListener(e -> {
+            // Handle the error, e.g., show a toast message
+            Log.e(TAG, e.toString());
+            Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show();
+        }).addOnSuccessListener(taskSnapshot -> {
+            fileRef.getDownloadUrl().addOnSuccessListener(url -> {
+                String imageUrl = url.toString();
+                addPostToDb(statusText, imageUrl);
+            });
+        }).addOnProgressListener(taskSnapshot -> {
+            // Calculate and display the upload progress here
+            double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+            // Update UI with the progress, e.g., using a progress bar
+        });
     }
 
     private void uploadImageToStorage(String statusText) {

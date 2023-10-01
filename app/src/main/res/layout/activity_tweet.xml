@@ -53,16 +53,29 @@
 
     <Button
         android:id="@+id/chooseImageButton"
-        android:layout_width="wrap_content"
+        android:layout_width="104dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"
-        android:layout_marginEnd="141dp"
+        android:layout_marginEnd="222dp"
         android:background="@drawable/round_bg_white"
         android:clipToOutline="true"
         android:text="Choose Image" />
+
+    <Button
+        android:id="@+id/takePhotoButton"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="271dp"
+        android:layout_marginEnd="92dp"
+        android:background="@drawable/round_bg_white"
+        android:clipToOutline="true"
+        android:text="Take Photo" />
 
     <ImageView
         android:id="@+id/tweetImageView"
