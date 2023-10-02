@@ -2,12 +2,15 @@ package vn.edu.usth.twitter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
+    CheckBox showPasswordCheckbox;
 
     User user;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -55,6 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
         buttonReg = findViewById(R.id.btn_register);
         progressBar = findViewById(R.id.progress_bar);
         textView = findViewById(R.id.loginNow);
+        // Initialize CheckBox
+        showPasswordCheckbox = findViewById(R.id.passwordCheckbox);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +71,20 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        showPasswordCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Toggle password visibility
+                if (isChecked) {
+                    editTextPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+                // Move cursor to the end of the text
+                editTextPassword.setSelection(editTextPassword.getText().length());
+            }
+        });
 
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,7 +118,75 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    private String validatePassword(String password) {
+        if (password.length() < 8) {
+            return "Password should be at least 8 characters long.";
+        }
+
+        if (!containsUppercase(password)) {
+            return "Password should contain at least one uppercase letter.";
+        }
+
+        if (!containsLowercase(password)) {
+            return "Password should contain at least one lowercase letter.";
+        }
+
+        if (!containsDigit(password)) {
+            return "Password should contain at least one digit.";
+        }
+
+        // If all conditions are met, return null to indicate a valid password
+        return null;
+    }
+
+    private boolean containsUppercase(String s) {
+        for (char c : s.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean containsLowercase(String s) {
+        for (char c : s.toCharArray()) {
+            if (Character.isLowerCase(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean containsDigit(String s) {
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //At least one lowercase letter ((?=.*[a-z]))
+    //At least one uppercase letter ((?=.*[A-Z]))
+    //At least one digit ((?=.*\\d))
+    //A minimum length of 8 characters (.{8,})
+
+
     public void  registerUser(String email,String password){
+        String passwordError = validatePassword(password);
+        // Check if the password is valid
+        if (passwordError != null) {
+            progressBar.setVisibility(View.GONE);
+            //Toast.makeText(LoginActivity.this, "Invalid password. Password should be at least 8 characters and contain uppercase, lowercase, and a number.", Toast.LENGTH_SHORT).show();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(RegisterActivity.this, passwordError, Toast.LENGTH_SHORT).show();
+                }
+            });
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                     @Override
