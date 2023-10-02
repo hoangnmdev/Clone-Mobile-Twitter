@@ -3,12 +3,15 @@ package vn.edu.usth.twitter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar progressBar;
     TextView textView;
     String userEmail,email,password;
+    CheckBox showPasswordCheckbox;
 
     @Override
     public void onStart(){
@@ -52,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
         buttonLog = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progress_bar);
         textView = findViewById(R.id.registerNow);
+        // Initialize CheckBox
+        showPasswordCheckbox = findViewById(R.id.passwordCheckbox);
 
         buttonLog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,8 +68,6 @@ public class LoginActivity extends AppCompatActivity {
                 password = String.valueOf((editTextPassword.getText()));
                 signin();
 
-
-
             }
         });
 
@@ -73,21 +77,51 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
+
+        showPasswordCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // Toggle password visibility
+                if (isChecked) {
+                    editTextPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                } else {
+                    editTextPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+
+                // Move cursor to the end of the text
+                editTextPassword.setSelection(editTextPassword.getText().length());
+            }
+        });
+
     }
+
     private void signin(){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 if(TextUtils.isEmpty(email)) {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     return;
                 }
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -98,14 +132,25 @@ public class LoginActivity extends AppCompatActivity {
                                     FirebaseUser currentUser = mAuth.getCurrentUser();
                                     if(currentUser != null){
                                         userEmail = currentUser.getEmail();
-                                        Toast.makeText(LoginActivity.this,userEmail,Toast.LENGTH_SHORT);
+                                        //Toast.makeText(LoginActivity.this,userEmail,Toast.LENGTH_SHORT);
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(LoginActivity.this, userEmail, Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                         startActivity(new Intent(LoginActivity.this,MainActivity.class).putExtra("email",userEmail));
                                         finish();
                                     }
                                 } else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                 }
                             }
                         });
