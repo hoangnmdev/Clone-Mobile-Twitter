@@ -8,6 +8,13 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/login_logo_twitter">
+
+    </ImageView>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,24 +25,37 @@
         android:textStyle="bold"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:hint="@string/email">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
-            android:hint="@string/email"
+            android:background="@drawable/login_round_border"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="380dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/password"
             android:hint="@string/password"
+            android:background="@drawable/login_round_border"
+            android:inputType="textPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/passwordCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="130dp"
+        android:layout_marginTop="5dp"
+        android:text="Show Password" />
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:visibility="gone"
@@ -43,9 +63,13 @@
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_round_blue"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textStyle="bold"/>
     <LinearLayout
         android:gravity="center"
         android:layout_marginTop="10dp"
@@ -56,7 +80,8 @@
             android:textSize="17sp"
             android:text="Don't have account?"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="#00a1ee"/>
         <TextView
             android:id="@+id/registerNow"
             android:layout_marginLeft="3dp"
@@ -64,7 +89,8 @@
             android:textSize="17sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Register"/>
+            android:text="Register"
+            android:textColor="#00a1ee"/>
     </LinearLayout>
 
 </LinearLayout>
