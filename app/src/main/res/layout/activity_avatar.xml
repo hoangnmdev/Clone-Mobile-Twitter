@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TweetActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/avatarToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></androidx.appcompat.widget.Toolbar>
+
+
+    <Button
+        android:id="@+id/chooseImageAvatarButton"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="704dp"
+        android:layout_marginEnd="226dp"
+        android:background="@drawable/round_bg_white"
+        android:clipToOutline="true"
+        android:text="Choose Image" />
+
+    <Button
+        android:id="@+id/takePhotoAvatarButton"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="699dp"
+        android:layout_marginEnd="54dp"
+        android:background="@drawable/round_bg_white"
+        android:clipToOutline="true"
+        android:text="Take Photo" />
+
+    <ImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="match_parent"
+        android:layout_height="561dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="113dp"
+        android:background="@drawable/round_bg"
+        android:clipToOutline="true" />
+
+    <Button
+        android:id="@+id/changeAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="11dp"
+        android:backgroundTint="@color/baby_blue"
+        android:onClick="ChangeAvatar"
+        android:text="Change Avatar"
+        android:textColor="@android:color/white" />
+</RelativeLayout>
