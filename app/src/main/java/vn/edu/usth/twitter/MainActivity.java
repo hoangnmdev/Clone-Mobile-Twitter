@@ -2,6 +2,8 @@ package vn.edu.usth.twitter;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -26,7 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import com.squareup.picasso.Picasso;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private FloatingActionButton fab ;
+
+    private ImageButton imageButton;
     String userEmail;
     private final int[] tabIcons = {
             R.drawable.home_icon,
@@ -48,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             R.drawable.inbox_icon,
     };
 
-    private FirebaseAuth mAuth;
-    private FirebaseUser firebaseUser;
+    private FirebaseAuth auth;
+    private FirebaseUser currentUser;
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,45 +69,53 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0); // Get the first (and usually only) header view
         toolbar = findViewById(R.id.toolbar);
         fab = findViewById(R.id.fab);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        currentUser = auth.getCurrentUser();
         String userEmail = currentUser.getEmail();
         TextView nav_userName =  headerView.findViewById(R.id.nav_username);
         TextView nav_userTagname = headerView.findViewById(R.id.nav_usertagname);
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
         DatabaseReference userRef = database.getReference("Users");
-
-        userRef.addValueEventListener(new ValueEventListener() {
-
+        new Thread(new Runnable() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    dbEmail = dataSnapshot.child("email").getValue(String.class);
+            public void run() {
+                userRef.addValueEventListener(new ValueEventListener() {
 
-                    if (dbEmail != null && dbEmail.equals(userEmail)) {
-                        userName = dataSnapshot.child("name").getValue(String.class);
-                        userTagname = dataSnapshot.child("tagName").getValue(String.class);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                nav_userName.setText(userName);
-                                nav_userTagname.setText(userTagname);
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            dbEmail = dataSnapshot.child("email").getValue(String.class);
+
+                            if (dbEmail != null && dbEmail.equals(userEmail)) {
+                                userName = dataSnapshot.child("name").getValue(String.class);
+                                userTagname = dataSnapshot.child("tagName").getValue(String.class);
+                                String profileImageReference = dataSnapshot.child("AvatarImage").getValue(String.class);
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Picasso.get().load(profileImageReference).into(imageButton);
+                                        nav_userName.setText(userName);
+                                        nav_userTagname.setText(userTagname);
+                                    }
+                                });
+                                // Set the TextViews with user data
+
+
+                                // You may break out of the loop since you found the user
+                                break;
                             }
-                        });
-                        // Set the TextViews with user data
-
-
-                        // You may break out of the loop since you found the user
-                        break;
+                        }
                     }
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Handle error if needed
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle error if needed
+                    }
+                });
             }
-        });
+        }).start();
+
         /*----------------Tool Bar-----------------*/
         setSupportActionBar(toolbar);
 
@@ -123,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //------------------Click on profile image in navigation view to open the profile activity----------//
 
-        ImageButton imageButton = headerView.findViewById(R.id.profile_image);
+        imageButton = headerView.findViewById(R.id.profile_image_nav);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +149,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         /*-------Click on floating action button to open tweet activity---------*/
         fab.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, TweetActivity.class)));
         bottomNav.setOnItemSelectedListener(navListener);
-
 
     }
 

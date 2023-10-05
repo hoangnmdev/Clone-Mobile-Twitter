@@ -61,7 +61,7 @@
         android:layout_height="40dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/registerTagName"
-            android:hint="\@Tagname"
+            android:hint="Tagname"
             android:background="@drawable/login_round_border"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

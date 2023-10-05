@@ -1,7 +1,9 @@
 package vn.edu.usth.twitter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference userRef;
     private FirebaseDatabase database;
@@ -31,6 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView textViewUserName,textViewUserTagname;
 
     String userEmail;
+
+    CircleImageView profileAvatar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         userEmail = currentUser.getEmail();
         textViewUserName = findViewById(R.id.profile_user_name);
         textViewUserTagname = findViewById(R.id.profile_user_tagname);
+        profileAvatar = findViewById(R.id.avatarNavView);
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -89,20 +96,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         TabLayout tabLayout =  findViewById(R.id.header);
         tabLayout.setupWithViewPager(pager);
-    }
-    @Override
+        profileAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, AvatarActivity.class));
+            }
+        });
 
-    protected void onStart() {
-        super.onStart();
     }
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
+
+
     public class HomeFragmentPagerAdapter extends FragmentPagerAdapter {
         private final int PAGE_COUNT = 5;
         private final String[] titles = new String[] { "Post", "Replies", "Highlight", "Media", "Likes" };
@@ -131,6 +134,7 @@ public class ProfileActivity extends AppCompatActivity {
             return titles[page];
         }
     }
+
 
 
 }

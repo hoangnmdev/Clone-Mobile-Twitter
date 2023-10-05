@@ -65,6 +65,7 @@ public class TweetActivity extends AppCompatActivity {
     private ImageView imageChoseView;
     Uri selectedImageUri;
     private StorageReference fileRef;
+    private String avatarUrl;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -277,6 +278,7 @@ public class TweetActivity extends AppCompatActivity {
                     if (dbEmail.equals(userEmail)) {
                         userName = dataSnapshot.child("name").getValue(String.class);
                         userTagname = dataSnapshot.child("tagName").getValue(String.class);
+                        avatarUrl = dataSnapshot.child("AvatarImage").getValue(String.class);
                         break;
                     }
                 }
@@ -285,7 +287,7 @@ public class TweetActivity extends AppCompatActivity {
                 String key = myRef.push().getKey();
                 HashMap<String, Object> postMap = new HashMap<>();
                 postMap.put("UserName", userName);
-                postMap.put("UserProfileImage", "user6");
+                postMap.put("UserProfileImage", avatarUrl);
                 postMap.put("UserId", userTagname);
                 postMap.put("Content", statusText);
                 postMap.put("ContentImage", imageUrl);

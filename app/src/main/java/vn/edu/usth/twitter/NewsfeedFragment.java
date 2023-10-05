@@ -70,19 +70,11 @@ public class NewsfeedFragment extends Fragment {
                             String name = postSnapshot.child("UserName").getValue(String.class);
                             String userId = postSnapshot.child("UserId").getValue(String.class);
                             String content = postSnapshot.child("Content").getValue(String.class);
-                            int profileDrawableResourceId = 0; // Default value indicating no image
-
                             String profileImageReference = postSnapshot.child("UserProfileImage").getValue(String.class);
                             String contentImageReference = postSnapshot.child("ContentImage").getValue(String.class);
 
-
-                            profileDrawableResourceId = getResources().getIdentifier(profileImageReference, "drawable", getContext().getPackageName());
-
-
-
-
                             // Now, create the PostItem with default or resolved drawable resource IDs
-                            PostItem postItem = new PostItem(name, profileDrawableResourceId, userId, content, contentImageReference);
+                            PostItem postItem = new PostItem(name, profileImageReference, userId, content, contentImageReference);
 
                             // Add the postItem to your list
                             postItems.add(0,postItem);

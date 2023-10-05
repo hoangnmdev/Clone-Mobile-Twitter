@@ -15,6 +15,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatarNavView"
         android:layout_width="68dp"
         android:layout_height="68dp"
         android:layout_marginTop="75dp"
@@ -22,7 +23,6 @@
         app:civ_border_width="5dp"
         app:civ_border_color="@color/white"
         android:src="@drawable/user6">
-
     </de.hdodenhof.circleimageview.CircleImageView>
 
     <RelativeLayout

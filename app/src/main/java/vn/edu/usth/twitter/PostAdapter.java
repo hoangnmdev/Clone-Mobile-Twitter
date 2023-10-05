@@ -37,12 +37,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PostItem postItem = postItems.get(position);
-        holder.userImage.setImageResource(postItem.getProfileImg());
+        Glide.with(context)
+                .load(postItem.getProfileImgUrl()) // Assuming getContentImage() returns the content image URL as a String
+                .into(holder.userImage);
         holder.userName.setText(postItem.getName());
         holder.userId.setText(postItem.getId());
         holder.postContent.setText((postItem.getContent()));
         Glide.with(context)
-                .load(postItem.getImageUrl()) // Assuming getContentImage() returns the content image URL as a String
+                .load(postItem.getContentImageUrl()) // Assuming getContentImage() returns the content image URL as a String
                 .into(holder.imageContent);
     }
 

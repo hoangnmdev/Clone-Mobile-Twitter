@@ -14,27 +14,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"></androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/imageViewProfileIcon"
-        android:layout_width="63dp"
-        android:layout_height="54dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="129dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/user6"/>
-
     <EditText
         android:id="@+id/editTextStatus"
-        android:layout_width="272dp"
-        android:layout_height="114dp"
+        android:layout_width="383dp"
+        android:layout_height="118dp"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="107dp"
+        android:layout_marginTop="86dp"
         android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@id/imageViewProfileIcon"
         android:gravity="start|top"
         android:hint="What's on your mind?"
         android:inputType="textMultiLine"
@@ -42,12 +30,11 @@
 
     <TextView
         android:id="@+id/textViewCharacterCount"
-        android:layout_width="wrap_content"
+        android:layout_width="52dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/editTextStatus"
-        android:layout_marginStart="263dp"
-        android:layout_marginBottom="-40dp"
-        android:layout_toEndOf="@id/imageViewProfileIcon"
+        android:layout_marginStart="330dp"
+        android:layout_marginBottom="-41dp"
         android:text="0/280"
         android:textColor="@color/cardview_dark_background" />
 

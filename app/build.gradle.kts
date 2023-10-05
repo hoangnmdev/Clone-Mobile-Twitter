@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.picasso:picasso:2.8")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-analytics:17.2.0")
     implementation("com.google.android.gms:play-services-auth:20.7.0")

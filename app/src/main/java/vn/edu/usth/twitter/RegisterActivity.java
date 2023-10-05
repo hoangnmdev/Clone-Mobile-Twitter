@@ -36,12 +36,13 @@ public class RegisterActivity extends AppCompatActivity {
     User user;
     FirebaseDatabase database = FirebaseDatabase.getInstance("https://twitterauthentication-453e4-default-rtdb.asia-southeast1.firebasedatabase.app/");
     DatabaseReference mDatabase = database.getReference("Users");
+
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+        if (currentUser != null) {
+            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
             finish();
         }
     }
@@ -94,28 +95,56 @@ public class RegisterActivity extends AppCompatActivity {
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf((editTextPassword.getText()));
                 userName = String.valueOf(editTextUserName.getText());
-                tagName = String.valueOf(editTextTagname.getText());
+                tagName = "@" + String.valueOf(editTextTagname.getText());
 
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter both email and password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.isEmpty(password)){
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(RegisterActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                    if(TextUtils.isEmpty(userName)){
+
+                if (TextUtils.isEmpty(userName)) {
                     userName = "user_name";
                 }
-                if(TextUtils.isEmpty(tagName)){
-                    tagName = "tag_name";
+
+                if (TextUtils.isEmpty(tagName)) {
+                    tagName = "@tag_name";
                 }
-                user = new User(email,password,userName,tagName);
-                registerUser(email,password);
+
+                user = new User(email, password, userName, tagName);
+                registerUser(email, password);
             }
         });
+    }
+
+    private void registerUser(String email, String password) {
+        String passwordError = validatePassword(password);
+
+        // Check if the password is valid
+        if (passwordError != null) {
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(RegisterActivity.this, passwordError, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressBar.setVisibility(View.GONE);
+                        if (task.isSuccessful()) {
+                            editTextEmail.setText("");
+                            editTextPassword.setText("");
+                            editTextUserName.setText("");
+                            editTextTagname.setText("");
+                            Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Failed to create account.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     private String validatePassword(String password) {
@@ -123,20 +152,11 @@ public class RegisterActivity extends AppCompatActivity {
             return "Password should be at least 8 characters long.";
         }
 
-        if (!containsUppercase(password)) {
-            return "Password should contain at least one uppercase letter.";
+        if (!containsUppercase(password) || !containsLowercase(password) || !containsDigit(password)) {
+            return "Password should contain at least one uppercase letter, one lowercase letter, and one digit.";
         }
 
-        if (!containsLowercase(password)) {
-            return "Password should contain at least one lowercase letter.";
-        }
-
-        if (!containsDigit(password)) {
-            return "Password should contain at least one digit.";
-        }
-
-        // If all conditions are met, return null to indicate a valid password
-        return null;
+        return null; // Password is valid
     }
 
     private boolean containsUppercase(String s) {
@@ -166,54 +186,9 @@ public class RegisterActivity extends AppCompatActivity {
         return false;
     }
 
-    //At least one lowercase letter ((?=.*[a-z]))
-    //At least one uppercase letter ((?=.*[A-Z]))
-    //At least one digit ((?=.*\\d))
-    //A minimum length of 8 characters (.{8,})
-
-
-    public void  registerUser(String email,String password){
-        String passwordError = validatePassword(password);
-        // Check if the password is valid
-        if (passwordError != null) {
-            progressBar.setVisibility(View.GONE);
-            //Toast.makeText(LoginActivity.this, "Invalid password. Password should be at least 8 characters and contain uppercase, lowercase, and a number.", Toast.LENGTH_SHORT).show();
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    Toast.makeText(RegisterActivity.this, passwordError, Toast.LENGTH_SHORT).show();
-                }
-            });
-            return;
-        }
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressBar.setVisibility(View.GONE);
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            editTextEmail.setText("");
-                            editTextPassword.setText("");
-                            editTextUserName.setText("");
-                            editTextTagname.setText("");
-                            Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(RegisterActivity.this, "Failed to create account.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-
-                });
-    }
-    public  void updateUI(FirebaseUser currentUser){
+    public void updateUI(FirebaseUser currentUser) {
         String keyId = mDatabase.push().getKey();
         mDatabase.child(keyId).setValue(user);
-        startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }
 }

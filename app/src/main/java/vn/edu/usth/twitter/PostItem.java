@@ -4,16 +4,15 @@ package vn.edu.usth.twitter;
 public class PostItem {
 
     private String name,content, id;
-    private String imageUrl;
-    private int profileImg,imageContent;
+    private String contentImageUrl, profileImgUrl;
     private int comment, rt, like;
     /*String name, String id, String content, int profileImg, int comment, int rt, int like*/
-    public PostItem(String name, int profileImg, String id, String content, String imageUrl) {
+    public PostItem(String name, String profileImg, String id, String content, String contentImageUrl) {
         this.name = name;
-        this.profileImg = profileImg;
+        this.profileImgUrl = profileImg;
         this.id = id;
         this.content = content;
-        this.imageUrl = imageUrl;
+        this.contentImageUrl = contentImageUrl;
     }
 
 
@@ -41,20 +40,20 @@ public class PostItem {
         this.content = content;
     }
 
-    public int getProfileImg() {
-        return profileImg;
+    public String getProfileImgUrl() {
+        return profileImgUrl;
     }
 
-    public void setProfileImg(int profileImg) {
-        this.profileImg = profileImg;
+    public void setProfileImgUrl(String profileImg) {
+        this.profileImgUrl = profileImg;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getContentImageUrl() {
+        return contentImageUrl;
     }
 
-    public void setImageUrl(String imageUrl) { // Corrected method name
-        this.imageUrl = imageUrl;
+    public void setContentImageUrl(String imageUrl) { // Corrected method name
+        this.contentImageUrl = imageUrl;
     }
 
 }
