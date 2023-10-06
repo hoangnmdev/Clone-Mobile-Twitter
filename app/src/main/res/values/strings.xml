@@ -116,4 +116,6 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
 
+    <string name="update_profile">Update Profile</string>
+
 </resources>
