@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -65,10 +66,12 @@ public class ProfileActivity extends AppCompatActivity {
                             if (dbEmail != null && dbEmail.equals(userEmail)) {
                                 String userName = dataSnapshot.child("name").getValue(String.class);
                                 String userTagname = dataSnapshot.child("tagName").getValue(String.class);
+                                String profileImageReference = dataSnapshot.child("AvatarImage").getValue(String.class);
                                 // Set the TextViews with user data
                                 runOnUiThread(new Runnable() {
                                                   @Override
                                                   public void run() {
+                                                      Picasso.get().load(profileImageReference).into(profileAvatar);
                                                       textViewUserName.setText(userName);
                                                       textViewUserTagname.setText(userTagname);
                                                   }
