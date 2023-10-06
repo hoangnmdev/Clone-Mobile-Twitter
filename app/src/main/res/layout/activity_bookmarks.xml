@@ -27,7 +27,7 @@
                 android:text="Bookmarks"
                 android:textStyle="bold"
                 android:textSize="20sp"
-                android:textColor="@color/black"/>
+                android:textColor="#121211"/>
 
 
         </LinearLayout>
@@ -43,7 +43,7 @@
         android:layout_marginBottom="10dp"
         android:text="@string/bookmark_head"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#121211"
         android:textSize="20dp"></TextView>
 
 

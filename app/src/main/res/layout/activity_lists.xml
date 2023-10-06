@@ -32,7 +32,7 @@
         android:layout_marginLeft="10dp"
         android:text="@string/list_header"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#121211"
         android:textSize="20sp">
     </TextView>
 
@@ -117,7 +117,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="#121211"
         android:textSize="20sp">
     </TextView>
 

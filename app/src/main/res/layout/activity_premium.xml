@@ -28,7 +28,7 @@
                 android:layout_marginLeft="87dp"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="#121211"/>
 
 
         </LinearLayout>
@@ -66,7 +66,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="@string/premium_content1"
-                android:textColor="@color/black"
+                android:textColor="#121211"
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
