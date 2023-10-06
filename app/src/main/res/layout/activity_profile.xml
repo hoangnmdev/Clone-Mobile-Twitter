@@ -22,23 +22,8 @@
         android:layout_marginLeft="20dp"
         app:civ_border_width="5dp"
         app:civ_border_color="@color/white"
-        android:src="@drawable/user6">
+        android:src="@drawable/user_profile">
     </de.hdodenhof.circleimageview.CircleImageView>
-
-    <RelativeLayout
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="110dp"
-        android:background="@drawable/round_bg_blue_border">
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:text="Edit Profile"
-            android:layout_marginLeft="10dp"
-            android:textAppearance="@style/edit_profile_font"/>
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,20 +31,20 @@
         android:layout_marginTop="100dp">
         <RelativeLayout
             android:id="@+id/profile_name"
-            android:layout_width="120dp"
+            android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_marginTop="45dp"
             android:layout_marginLeft="20dp">
             <TextView
                 android:id="@+id/profile_user_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/user_name"
                 android:textAppearance="@style/profile_user_name">
             </TextView>
             <TextView
                 android:id="@+id/profile_user_tagname"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/profile_user_name"
                 android:text="@string/profile_user_tagname">
