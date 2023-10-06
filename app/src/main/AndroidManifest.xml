@@ -25,6 +25,7 @@
         tools:targetApi="31">
         <activity
             android:name=".AvatarActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -44,6 +45,11 @@
             android:name=".TweetActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".UpdateProfile"
+            android:exported="false"
+            android:parentActivityName=".UpdateProfile"/>
+
         <activity
             android:name=".ListsActivity"
             android:exported="false"
